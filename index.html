@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audrey Pramudita Sudarmanto | Software Engineer, AI Engineer &amp; Data Analyst</title>
+  <meta name="description" content="Portofolio Audrey Pramudita Sudarmanto: Software Engineer, AI Engineer, dan Data Analyst.">
+
+  <!-- Atur tema (terang/gelap) sebelum halaman tampil supaya tidak berkedip -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      d.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Garis progres scroll -->
+  <div class="progress" id="progress"></div>
+
+  <header class="nav">
+    <a href="#top" class="logo">Audrey.</a>
+
+    <nav id="menu" aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#pendidikan">Pendidikan</a>
+      <a href="#sertifikat">Sertifikat</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Ganti tema">☾</button>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Halo, saya</p>
+        <h1>Audrey Pramudita Sudarmanto</h1>
+        <p class="role"><span id="typed">Software Engineer</span><span class="caret"></span></p>
+        <p class="lead">Lulusan Teknik Informatika yang berfokus pada Software Engineering dan AI/Data Analysis: dari aplikasi web dan mobile sampai solusi machine learning dan LLM.</p>
+        <div class="cta">
+          <a class="btn primary" href="#kontak">Hubungi saya</a>
+          <a class="btn" href="#proyek">Lihat proyek</a>
+          <a class="btn" id="cvDownload" href="assets/CV-Audrey-Pramudita-Sudarmanto.pdf" download>Unduh CV</a>
+        </div>
+      </div>
+      <!-- Foto utama: klik untuk ganti latar putih/merah. File ada di folder assets/ -->
+      <div class="photo-wrap">
+        <div class="photo" id="photo" role="button" tabindex="0" aria-label="Klik untuk ganti foto" title="Klik untuk ganti latar foto">
+          <img class="p1" src="assets/foto-putih.png" alt="Foto Audrey Pramudita Sudarmanto"
+               onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');">
+          <img class="p2" src="assets/foto-merah.png" alt="" onerror="this.remove();">
+          <span class="initials">AP</span>
+        </div>
+        <p class="photo-hint">Klik foto untuk ganti latar</p>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="tentang" class="reveal">
+      <h2>Tentang</h2>
+      <p>Lulusan Teknik Informatika (Politeknik Negeri Jember) yang teliti dan berfokus pada Software Engineering serta AI/Data Analysis. Terbiasa menjembatani pengembangan web dan mobile yang skalabel (Laravel, React) dengan solusi data tingkat lanjut seperti Machine Learning, LLM, dan RAG.</p>
+      <p>Berpengalaman menyelesaikan proyek end-to-end, mulai dari prototipe UI/UX dan pengujian kualitas berstandar ISO 25010 hingga pipeline otomasi berbasis AI. Senang memanfaatkan data dan arsitektur perangkat lunak yang kokoh untuk memecahkan masalah bisnis yang kompleks dan meningkatkan efisiensi operasional.</p>
+      <p>Terbuka untuk peluang di bidang Software Engineering, AI Engineering, dan Data Analysis.</p>
+      <p class="meta">📍 Lumajang, Jawa Timur, Indonesia &nbsp;&middot;&nbsp; 🌐 Bahasa Indonesia (native), Inggris (menengah)</p>
+    </section>
+
+    <!-- PENGALAMAN -->
+    <section id="pengalaman" class="reveal">
+      <h2>Pengalaman</h2>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>Intern, AI Engineer</h3>
+          <span class="date">Agu 2025 – Des 2025</span>
+        </div>
+        <p class="org">CV. OTW Computer Gusaha &middot; Surabaya, Jawa Timur</p>
+        <ul>
+          <li>Mengembangkan dan mengoptimalkan model machine learning untuk klasifikasi data korporat.</li>
+          <li>Mengintegrasikan layanan web AI dan pipeline parsing otomatis untuk mempercepat operasional data.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>UI/UX Designer (Project-Based Virtual Intern)</h3>
+          <span class="date">Mei 2025 – Jun 2025</span>
+        </div>
+        <p class="org">FundEx x Rakamin Academy</p>
+        <ul>
+          <li>Melakukan riset pengguna dan menerjemahkan kebutuhan menjadi wireframe serta user flow yang menyeluruh.</li>
+          <li>Membuat prototipe interaktif high-fidelity di Figma untuk mengoptimalkan navigasi dashboard investasi.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>UI/UX Designer (Project-Based Virtual Intern)</h3>
+          <span class="date">Feb 2025 – Mar 2025</span>
+        </div>
+        <p class="org">Nuri x Rakamin Academy</p>
+        <ul>
+          <li>Merancang antarmuka e-commerce yang berpusat pada pengguna untuk meningkatkan engagement.</li>
+          <li>Mengiterasi layout berdasarkan umpan balik usability testing agar sesuai pedoman aplikasi mobile modern.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>Intern PNBP</h3>
+          <span class="date">Jun 2024 – Mar 2025</span>
+        </div>
+        <p class="org">Tompokersan &amp; Politeknik Negeri Jember</p>
+        <ul>
+          <li>Berkolaborasi pada inisiatif perangkat lunak informasi tingkat daerah, berperan sebagai penghubung kebutuhan teknis.</li>
+          <li>Membantu pengelolaan database, penyusunan logika backend, dan sinkronisasi sistem.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>Intern</h3>
+          <span class="date">Feb 2024 – Sep 2024</span>
+        </div>
+        <p class="org">e-Badean &amp; Politeknik Negeri Jember</p>
+        <ul>
+          <li>Berkontribusi mengembangkan modul backend manajemen surat resmi dengan Laravel.</li>
+          <li>Memastikan autentikasi multi-peran berjalan lancar dan mempercepat rilis fitur aplikasi.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>Intern</h3>
+          <span class="date">Jul 2019 – Sep 2019</span>
+        </div>
+        <p class="org">Telkom Akses &middot; Kota Pasuruan, Jawa Timur</p>
+        <ul>
+          <li>Memantau operasional infrastruktur jaringan broadband dan mendokumentasikan layout data lokasi.</li>
+          <li>Membantu tim teknis dalam diagnostik, konfigurasi, dan pemecahan masalah jaringan dasar.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- PROYEK -->
+    <section id="proyek" class="reveal">
+      <h2>Proyek</h2>
+
+      <div class="filters" role="group" aria-label="Filter proyek">
+        <button class="chip active" data-filter="all">Semua</button>
+        <button class="chip" data-filter="ai">AI &amp; Data</button>
+        <button class="chip" data-filter="web">Web &amp; Mobile</button>
+        <button class="chip" data-filter="iot">IoT</button>
+        <button class="chip" data-filter="desktop">Desktop</button>
+      </div>
+
+      <!-- TODO: link GitHub/Demo tiap proyek: ganti href="#" (kalau dibiarkan "#", tombolnya otomatis tersembunyi) -->
+      <div class="grid">
+
+        <article class="card" data-kind="ai web">
+          <h3>KawanTumbuh</h3>
+          <p class="pr-role">Data Analyst &amp; Full Stack Developer</p>
+          <p>Aplikasi Android pemantau pertumbuhan balita yang memprediksi indikator pertumbuhan dengan forecasting time series dan machine learning. Proyek skripsi.</p>
+          <p class="tags"><span>Python</span><span>Prophet</span><span>XGBoost</span><span>Scikit-Learn</span><span>Pandas</span><span>Mobile Dev</span><span>Supabase</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="ai web">
+          <h3>Job Matcher Agent</h3>
+          <p class="pr-role">AI/ML Engineer (Solo Project)</p>
+          <p>Agen AI untuk penyaringan dan pencocokan lowongan kerja, mencakup arsitektur sistem serta integrasi LLM dengan RAG.</p>
+          <p class="tags"><span>Python</span><span>LangChain</span><span>LLM</span><span>RAG</span><span>Agentic AI</span><span>Supabase</span><span>React</span><span>REST API</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="ai web">
+          <h3>Stunting &amp; Nutrition Status Classifier</h3>
+          <p class="pr-role">AI/ML Engineer &amp; Full Stack Developer (Solo)</p>
+          <p>Model klasifikasi status gizi dan stunting dengan XGBoost, dilengkapi interpretasi SHAP dan pelacakan eksperimen MLflow, disajikan lewat FastAPI dan antarmuka React.</p>
+          <p class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>MLflow</span><span>SHAP</span><span>FastAPI</span><span>React</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="ai">
+          <h3>Stunting Determinant Analysis: Data Provinsi Indonesia</h3>
+          <p class="pr-role">Data Analyst (Solo Project)</p>
+          <p>Analisis faktor penentu stunting antarprovinsi di Indonesia, mencakup eksplorasi data, uji statistik, dan proyeksi tren.</p>
+          <p class="tags"><span>Python</span><span>Pandas</span><span>Seaborn</span><span>SciPy</span><span>Prophet</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="ai">
+          <h3>Automotive Sales Analysis</h3>
+          <p class="pr-role">Data Analyst (Bootcamp Project) &middot; Sep 2026</p>
+          <p>Analisis data penjualan otomotif dengan Excel, SQL di BigQuery, dan dashboard Power BI (DAX). Proyek akhir Bootcamp Data Analyst KarirNex.</p>
+          <p class="tags"><span>Excel</span><span>SQL (BigQuery)</span><span>Power BI</span><span>DAX</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">Lihat dashboard ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="ai web">
+          <h3>Data Automator Project</h3>
+          <p class="pr-role">AI Engineer &amp; Backend Developer</p>
+          <p>Otomasi pengolahan data: pipeline parsing otomatis dan integrasi layanan AI untuk mempercepat operasional data.</p>
+          <p class="tags"><span>Python</span><span>Tabula</span><span>Pandas</span><span>n8n</span><span>Laravel</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="iot ai">
+          <h3>REDSPINTECH</h3>
+          <p class="pr-role">IoT Developer &amp; Machine Learning Engineer</p>
+          <p>Penerapan IoT dan AI untuk mengoptimalkan pertumbuhan bayam merah, memadukan perangkat berbasis ESP32 dengan machine learning.</p>
+          <p class="tags"><span>ESP32</span><span>IoT</span><span>Machine Learning</span><span>Python</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="web">
+          <h3>SIAKAD</h3>
+          <p class="pr-role">Full Stack Developer</p>
+          <p>Sistem informasi akademik terpadu dengan autentikasi multi-peran (multi-role authentication).</p>
+          <p class="tags"><span>Laravel</span><span>Bootstrap</span><span>MySQL</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="web">
+          <h3>E-Badean</h3>
+          <p class="pr-role">Frontend &amp; Backend Developer, UI/UX Designer</p>
+          <p>Sistem informasi pelayanan surat Kelurahan Badean, dengan modul manajemen surat resmi dan autentikasi multi-peran.</p>
+          <p class="tags"><span>Laravel</span><span>Web Development</span><span>Mobile</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="web">
+          <h3>SICC (Sistem Informasi Competition Center)</h3>
+          <p class="pr-role">Web &amp; Mobile Developer</p>
+          <p>Sistem informasi untuk pengelolaan kompetisi, tersedia di web dan mobile.</p>
+          <p class="tags"><span>Web Development</span><span>Mobile</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="web">
+          <h3>Tompokersan Surat Menyurat</h3>
+          <p class="pr-role">Web &amp; Mobile Developer</p>
+          <p>Aplikasi surat-menyurat untuk Tompokersan yang dapat diakses lewat web dan mobile.</p>
+          <p class="tags"><span>Web Development</span><span>Mobile</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="desktop">
+          <h3>Lavarie: Laundry Information System</h3>
+          <p class="pr-role">Desktop Application Developer, UI Designer</p>
+          <p>Sistem informasi laundry berbasis aplikasi desktop untuk mengelola layanan dan transaksi.</p>
+          <p class="tags"><span>Java</span><span>Desktop Application</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+        <article class="card" data-kind="desktop">
+          <h3>Rentalin (Awan Adventure)</h3>
+          <p class="pr-role">Desktop Application Developer, UI Designer</p>
+          <p>Aplikasi desktop pengelolaan penyewaan (rental) untuk Awan Adventure.</p>
+          <p class="tags"><span>Java</span><span>Desktop Application</span></p>
+          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- KEAHLIAN -->
+    <section id="keahlian" class="reveal">
+      <h2>Keahlian</h2>
+      <div class="skills">
+        <div>
+          <h3>Pemrograman</h3>
+          <p class="tags"><span>Python</span><span>PHP</span><span>Java</span><span>SQL</span></p>
+        </div>
+        <div>
+          <h3>Framework &amp; Library</h3>
+          <p class="tags"><span>Laravel</span><span>React</span><span>Bootstrap</span><span>Pandas</span><span>LangChain</span><span>Prophet</span></p>
+        </div>
+        <div>
+          <h3>AI &amp; Data</h3>
+          <p class="tags"><span>Machine Learning</span><span>LLM</span><span>RAG</span><span>XGBoost</span><span>Scikit-Learn</span><span>Agentic AI</span><span>Tabula</span><span>MLflow</span><span>SHAP</span><span>SMOTE</span></p>
+        </div>
+        <div>
+          <h3>Tools &amp; Platform</h3>
+          <p class="tags"><span>Supabase</span><span>REST API</span><span>n8n</span><span>Git</span><span>VS Code</span><span>Excel</span><span>Pivot Table</span><span>Google BigQuery</span><span>Power BI</span><span>DAX</span></p>
+        </div>
+        <div>
+          <h3>Software &amp; IoT</h3>
+          <p class="tags"><span>Web Dev</span><span>Mobile Dev</span><span>Desktop App</span><span>ESP32</span></p>
+        </div>
+        <div>
+          <h3>Desain &amp; QA</h3>
+          <p class="tags"><span>Figma</span><span>UAT</span><span>ISO 25010</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PENDIDIKAN -->
+    <section id="pendidikan" class="reveal">
+      <h2>Pendidikan</h2>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>Politeknik Negeri Jember</h3>
+          <span class="date">Agu 2022 – Jun 2026</span>
+        </div>
+        <p class="org">Sarjana Teknik Informatika</p>
+      </article>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>SMK Telkom Malang</h3>
+          <span class="date">Jul 2018 – Apr 2020</span>
+        </div>
+        <p class="org">Teknik Komputer dan Jaringan</p>
+      </article>
+    </section>
+
+    <!-- SERTIFIKAT -->
+    <section id="sertifikat" class="reveal">
+      <h2>Sertifikasi</h2>
+      <p class="hint">Klik thumbnail untuk memperbesar sertifikat.</p>
+
+      <!--
+        CARA MENAMBAH GAMBAR SERTIFIKAT:
+        1. Simpan gambar (jpg/png) di folder assets/sertifikat/
+        2. Namanya harus sama dengan di atribut src di bawah ini
+        3. Kalau punya link verifikasi, ganti href="#" pada tombol "Verifikasi"
+           (kalau dibiarkan "#", tombolnya otomatis disembunyikan)
+      -->
+
+      <h3 class="sub">Sertifikasi Profesi (BNSP)</h3>
+      <div class="cert-grid">
+
+        <article class="cert">
+          <button class="cert-thumb pdf" type="button" data-full="assets/sertifikat/bnsp-web-developer-2026.pdf" data-title="Sertifikat Kompetensi Web Developer BNSP" aria-label="Perbesar sertifikat Web Developer BNSP">
+            <span class="ph">📄 Lihat PDF</span>
+          </button>
+          <div class="cert-body">
+            <h4>Sertifikat Kompetensi: Web Developer</h4>
+            <p class="org">Badan Nasional Sertifikasi Profesi (BNSP)</p>
+            <p class="date">Apr 2026 &middot; berlaku s.d. Apr 2030</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" data-full="assets/sertifikat/bnsp-associate-data-scientist-2025.pdf" data-title="Sertifikat Associate Data Scientist BNSP" aria-label="Perbesar sertifikat Associate Data Scientist BNSP">
+            <img src="assets/sertifikat/bnsp-associate-data-scientist-2025.jpg" alt="Sertifikat Associate Data Scientist BNSP" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>Associate Data Scientist</h4>
+            <p class="org">Badan Nasional Sertifikasi Profesi (BNSP)</p>
+            <p class="date">Jul 2025 &middot; berlaku s.d. Jul 2028</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Web Development BNSP">
+            <img src="assets/sertifikat/bnsp-web-development-2023.jpg" alt="Sertifikat Web Development BNSP" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>Web Development (Junior Web Developer)</h4>
+            <p class="org">Badan Nasional Sertifikasi Profesi (BNSP)</p>
+            <p class="date">Sep 2023</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+      </div>
+
+      <h3 class="sub">Pelatihan &amp; Bootcamp</h3>
+      <div class="cert-grid">
+
+        <article class="cert">
+          <button class="cert-thumb pdf" type="button" data-full="assets/sertifikat/karirnex-data-analyst.pdf" data-title="Sertifikat Bootcamp Data Analyst KarirNex" aria-label="Perbesar sertifikat Bootcamp Data Analyst">
+            <span class="ph">📄 Lihat PDF</span>
+          </button>
+          <div class="cert-body">
+            <h4>Bootcamp Data Analyst</h4>
+            <p class="org">KarirNex</p>
+            <p class="date">Sep 2026</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Associate Data Scientist VSGA">
+            <img src="assets/sertifikat/dts-associate-data-scientist.jpg" alt="Sertifikat Associate Data Scientist VSGA Digital Talent Scholarship" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>Associate Data Scientist (Vocational School Graduate Academy)</h4>
+            <p class="org">Digital Talent Scholarship</p>
+            <p class="date">Jun 2025</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Junior Web Developer VSGA">
+            <img src="assets/sertifikat/dts-junior-web-developer.jpg" alt="Sertifikat Junior Web Developer VSGA Digital Talent Scholarship" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>Junior Web Developer (Vocational School Graduate Academy)</h4>
+            <p class="org">Digital Talent Scholarship</p>
+            <p class="date">Agu 2023</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Belajar Dasar Data Science">
+            <img src="assets/sertifikat/dicoding-data-science.jpg" alt="Sertifikat Belajar Dasar Data Science Dicoding" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>Belajar Dasar Data Science</h4>
+            <p class="org">Dicoding Indonesia</p>
+            <p class="date">Mei 2025</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Belajar Dasar AI">
+            <img src="assets/sertifikat/dicoding-ai.jpg" alt="Sertifikat Belajar Dasar AI Dicoding" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>Belajar Dasar AI</h4>
+            <p class="org">Dicoding Indonesia</p>
+            <p class="date">Apr 2025</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb pdf" type="button" data-full="assets/sertifikat/ept-polije.pdf" data-title="Sertifikat English Proficiency Test (EPT) Politeknik Negeri Jember" aria-label="Perbesar sertifikat EPT">
+            <span class="ph">📄 Lihat PDF</span>
+          </button>
+          <div class="cert-body">
+            <h4>English Proficiency Test (EPT)</h4>
+            <p class="org">Politeknik Negeri Jember</p>
+            <p class="date">Mar 2026</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat RevoU">
+            <img src="assets/sertifikat/revou.jpg" alt="Sertifikat RevoU" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <!-- TODO: isi nama program RevoU dan bulan-tahun terbitnya -->
+            <h4>Nama Program RevoU</h4>
+            <p class="org">RevoU</p>
+            <p class="date">Bulan Tahun</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+      </div>
+
+      <h3 class="sub">Magang</h3>
+      <div class="cert-grid">
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat magang OTW">
+            <img src="assets/sertifikat/otw-internship.jpg" alt="Sertifikat kelulusan magang OTW Gusaha Teknologi Indonesia" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>Certificate of Internship Completion</h4>
+            <p class="org">CV. OTW Computer Gusaha</p>
+            <p class="date">Des 2025</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb pdf" type="button" data-full="assets/sertifikat/fundex-uiux.pdf" data-title="Sertifikat UI/UX Designer FundEx" aria-label="Perbesar sertifikat FundEx">
+            <span class="ph">📄 Lihat PDF</span>
+          </button>
+          <div class="cert-body">
+            <h4>UI/UX Designer, Project Based Internship</h4>
+            <p class="org">Fundex.id x Rakamin Academy</p>
+            <p class="date">Jun 2025</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Nuri">
+            <img src="assets/sertifikat/nuri-uiux.jpg" alt="Sertifikat UI/UX Designer Nuri" loading="lazy" onerror="this.parentElement.classList.add('empty')">
+            <span class="ph">Sertifikat</span>
+          </button>
+          <div class="cert-body">
+            <h4>UI/UX Designer, Project Based Internship</h4>
+            <p class="org">Nuri x Rakamin Academy</p>
+            <p class="date">2025</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="reveal">
+      <h2>Kontak</h2>
+      <p>Tertarik berkolaborasi atau punya peluang untuk dibicarakan? Hubungi saya.</p>
+      <p class="contact-links">
+        <a class="btn primary" href="mailto:audreypramudita@gmail.com">Kirim email</a>
+        <button class="btn" id="copyEmail" type="button" data-email="audreypramudita@gmail.com">Salin email</button>
+        <a class="btn" href="https://www.linkedin.com/in/audreypramudita-sudarmanto-599079208" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/2lau" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Audrey Pramudita Sudarmanto</p>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Pembesar gambar sertifikat -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Tutup">✕</button>
+    <figure>
+      <img id="lbImg" src="" alt="">
+      <iframe id="lbFrame" title="Sertifikat"></iframe>
+      <figcaption><span id="lbCaption"></span> &middot; <a id="lbOpen" href="#" target="_blank" rel="noopener">Buka di tab baru ↗</a></figcaption>
+    </figure>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
