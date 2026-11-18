@@ -18,6 +18,13 @@
       }
       d.setAttribute('data-theme', t);
     })();
+    // Coba ekstensi lain kalau gambar proyek tidak ditemukan (jpg, png, jpeg, webp)
+    window.imgFb = function (img) {
+      var exts = ['jpg', 'png', 'jpeg', 'webp'];
+      var n = (+img.dataset.n || 0) + 1;
+      if (n < exts.length) { img.dataset.n = n; img.src = img.dataset.base + '.' + exts[n]; }
+      else { img.onerror = null; img.parentElement.classList.add('empty'); }
+    };
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,6 +69,11 @@
           <a class="btn primary" href="#kontak">Hubungi saya</a>
           <a class="btn" href="#proyek">Lihat proyek</a>
           <a class="btn" id="cvDownload" href="assets/CV-Audrey-Pramudita-Sudarmanto.pdf" download>Unduh CV</a>
+        </div>
+        <div class="stats">
+          <div><b data-stat="proyek">13</b><span>Proyek</span></div>
+          <div><b data-stat="pengalaman">6</b><span>Pengalaman</span></div>
+          <div><b data-stat="sertifikat">14</b><span>Sertifikat</span></div>
         </div>
       </div>
       <!-- Foto utama: klik untuk ganti latar putih/merah. File ada di folder assets/ -->
@@ -177,111 +189,178 @@
       <!-- TODO: link GitHub/Demo tiap proyek: ganti href="#" (kalau dibiarkan "#", tombolnya otomatis tersembunyi) -->
       <div class="grid">
 
-        <article class="card" data-kind="ai web">
+        <article class="card" data-kind="ai web" data-slug="kawantumbuh" tabindex="0" role="button" aria-label="Lihat detail KawanTumbuh">
+          <div class="card-img">
+            <img src="assets/proyek/kawantumbuh.jpg" data-base="assets/proyek/kawantumbuh" alt="Tampilan proyek KawanTumbuh" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>KawanTumbuh</h3>
           <p class="pr-role">Data Analyst &amp; Full Stack Developer</p>
           <p>Aplikasi Android pemantau pertumbuhan balita yang memprediksi indikator pertumbuhan dengan forecasting time series dan machine learning. Proyek skripsi.</p>
           <p class="tags"><span>Python</span><span>Prophet</span><span>XGBoost</span><span>Scikit-Learn</span><span>Pandas</span><span>Mobile Dev</span><span>Supabase</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="ai web">
+        <article class="card" data-kind="ai web" data-slug="job-matcher-agent" tabindex="0" role="button" aria-label="Lihat detail Job Matcher Agent">
+          <div class="card-img">
+            <img src="assets/proyek/job-matcher-agent.jpg" data-base="assets/proyek/job-matcher-agent" alt="Tampilan proyek Job Matcher Agent" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Job Matcher Agent</h3>
           <p class="pr-role">AI/ML Engineer (Solo Project)</p>
           <p>Agen AI untuk penyaringan dan pencocokan lowongan kerja, mencakup arsitektur sistem serta integrasi LLM dengan RAG.</p>
           <p class="tags"><span>Python</span><span>LangChain</span><span>LLM</span><span>RAG</span><span>Agentic AI</span><span>Supabase</span><span>React</span><span>REST API</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="ai web">
+        <article class="card" data-kind="ai web" data-slug="stunting-classifier" tabindex="0" role="button" aria-label="Lihat detail Stunting & Nutrition Status Classifier">
+          <div class="card-img">
+            <img src="assets/proyek/stunting-classifier.jpg" data-base="assets/proyek/stunting-classifier" alt="Tampilan proyek Stunting &amp; Nutrition Status Classifier" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Stunting &amp; Nutrition Status Classifier</h3>
           <p class="pr-role">AI/ML Engineer &amp; Full Stack Developer (Solo)</p>
           <p>Model klasifikasi status gizi dan stunting dengan XGBoost, dilengkapi interpretasi SHAP dan pelacakan eksperimen MLflow, disajikan lewat FastAPI dan antarmuka React.</p>
           <p class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>MLflow</span><span>SHAP</span><span>FastAPI</span><span>React</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="ai">
+        <article class="card" data-kind="ai" data-slug="stunting-analysis" tabindex="0" role="button" aria-label="Lihat detail Stunting Determinant Analysis: Data Provinsi Indonesia">
+          <div class="card-img">
+            <img src="assets/proyek/stunting-analysis.jpg" data-base="assets/proyek/stunting-analysis" alt="Tampilan proyek Stunting Determinant Analysis: Data Provinsi Indonesia" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Stunting Determinant Analysis: Data Provinsi Indonesia</h3>
           <p class="pr-role">Data Analyst (Solo Project)</p>
           <p>Analisis faktor penentu stunting antarprovinsi di Indonesia, mencakup eksplorasi data, uji statistik, dan proyeksi tren.</p>
           <p class="tags"><span>Python</span><span>Pandas</span><span>Seaborn</span><span>SciPy</span><span>Prophet</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="ai">
+        <article class="card" data-kind="ai" data-slug="automotive-sales" tabindex="0" role="button" aria-label="Lihat detail Automotive Sales Analysis">
+          <div class="card-img">
+            <img src="assets/proyek/automotive-sales.jpg" data-base="assets/proyek/automotive-sales" alt="Tampilan proyek Automotive Sales Analysis" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Automotive Sales Analysis</h3>
           <p class="pr-role">Data Analyst (Bootcamp Project) &middot; Sep 2026</p>
           <p>Analisis data penjualan otomotif dengan Excel, SQL di BigQuery, dan dashboard Power BI (DAX). Proyek akhir Bootcamp Data Analyst KarirNex.</p>
           <p class="tags"><span>Excel</span><span>SQL (BigQuery)</span><span>Power BI</span><span>DAX</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">Lihat dashboard ↗</a></p>
         </article>
 
-        <article class="card" data-kind="ai web">
+        <article class="card" data-kind="ai web" data-slug="data-automator" tabindex="0" role="button" aria-label="Lihat detail Data Automator Project">
+          <div class="card-img">
+            <img src="assets/proyek/data-automator.jpg" data-base="assets/proyek/data-automator" alt="Tampilan proyek Data Automator Project" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Data Automator Project</h3>
           <p class="pr-role">AI Engineer &amp; Backend Developer</p>
           <p>Otomasi pengolahan data: pipeline parsing otomatis dan integrasi layanan AI untuk mempercepat operasional data.</p>
           <p class="tags"><span>Python</span><span>Tabula</span><span>Pandas</span><span>n8n</span><span>Laravel</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="iot ai">
+        <article class="card" data-kind="iot ai" data-slug="redspintech" tabindex="0" role="button" aria-label="Lihat detail REDSPINTECH">
+          <div class="card-img">
+            <img src="assets/proyek/redspintech.jpg" data-base="assets/proyek/redspintech" alt="Tampilan proyek REDSPINTECH" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>REDSPINTECH</h3>
           <p class="pr-role">IoT Developer &amp; Machine Learning Engineer</p>
           <p>Penerapan IoT dan AI untuk mengoptimalkan pertumbuhan bayam merah, memadukan perangkat berbasis ESP32 dengan machine learning.</p>
           <p class="tags"><span>ESP32</span><span>IoT</span><span>Machine Learning</span><span>Python</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="web">
+        <article class="card" data-kind="web" data-slug="siakad" tabindex="0" role="button" aria-label="Lihat detail SIAKAD">
+          <div class="card-img">
+            <img src="assets/proyek/siakad.jpg" data-base="assets/proyek/siakad" alt="Tampilan proyek SIAKAD" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>SIAKAD</h3>
           <p class="pr-role">Full Stack Developer</p>
           <p>Sistem informasi akademik terpadu dengan autentikasi multi-peran (multi-role authentication).</p>
           <p class="tags"><span>Laravel</span><span>Bootstrap</span><span>MySQL</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="web">
+        <article class="card" data-kind="web" data-slug="e-badean" tabindex="0" role="button" aria-label="Lihat detail E-Badean">
+          <div class="card-img">
+            <img src="assets/proyek/e-badean.jpg" data-base="assets/proyek/e-badean" alt="Tampilan proyek E-Badean" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>E-Badean</h3>
           <p class="pr-role">Frontend &amp; Backend Developer, UI/UX Designer</p>
           <p>Sistem informasi pelayanan surat Kelurahan Badean, dengan modul manajemen surat resmi dan autentikasi multi-peran.</p>
           <p class="tags"><span>Laravel</span><span>Web Development</span><span>Mobile</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="web">
+        <article class="card" data-kind="web" data-slug="sicc" tabindex="0" role="button" aria-label="Lihat detail SICC (Sistem Informasi Competition Center)">
+          <div class="card-img">
+            <img src="assets/proyek/sicc.jpg" data-base="assets/proyek/sicc" alt="Tampilan proyek SICC (Sistem Informasi Competition Center)" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>SICC (Sistem Informasi Competition Center)</h3>
           <p class="pr-role">Web &amp; Mobile Developer</p>
           <p>Sistem informasi untuk pengelolaan kompetisi, tersedia di web dan mobile.</p>
           <p class="tags"><span>Web Development</span><span>Mobile</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="web">
+        <article class="card" data-kind="web" data-slug="tompokersan-surat" tabindex="0" role="button" aria-label="Lihat detail Tompokersan Surat Menyurat">
+          <div class="card-img">
+            <img src="assets/proyek/tompokersan-surat.jpg" data-base="assets/proyek/tompokersan-surat" alt="Tampilan proyek Tompokersan Surat Menyurat" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Tompokersan Surat Menyurat</h3>
           <p class="pr-role">Web &amp; Mobile Developer</p>
           <p>Aplikasi surat-menyurat untuk Tompokersan yang dapat diakses lewat web dan mobile.</p>
           <p class="tags"><span>Web Development</span><span>Mobile</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="desktop">
+        <article class="card" data-kind="desktop" data-slug="lavarie" tabindex="0" role="button" aria-label="Lihat detail Lavarie: Laundry Information System">
+          <div class="card-img">
+            <img src="assets/proyek/lavarie.jpg" data-base="assets/proyek/lavarie" alt="Tampilan proyek Lavarie: Laundry Information System" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Lavarie: Laundry Information System</h3>
           <p class="pr-role">Desktop Application Developer, UI Designer</p>
           <p>Sistem informasi laundry berbasis aplikasi desktop untuk mengelola layanan dan transaksi.</p>
           <p class="tags"><span>Java</span><span>Desktop Application</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
-        <article class="card" data-kind="desktop">
+        <article class="card" data-kind="desktop" data-slug="rentalin" tabindex="0" role="button" aria-label="Lihat detail Rentalin (Awan Adventure)">
+          <div class="card-img">
+            <img src="assets/proyek/rentalin.jpg" data-base="assets/proyek/rentalin" alt="Tampilan proyek Rentalin (Awan Adventure)" loading="lazy" onerror="imgFb(this)">
+            <span class="ph">Foto proyek</span>
+          </div>
           <h3>Rentalin (Awan Adventure)</h3>
           <p class="pr-role">Desktop Application Developer, UI Designer</p>
           <p>Aplikasi desktop pengelolaan penyewaan (rental) untuk Awan Adventure.</p>
           <p class="tags"><span>Java</span><span>Desktop Application</span></p>
+          <span class="more">Lihat detail →</span>
           <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
         </article>
 
       </div>
+
+      <div class="more-wrap"><button class="btn" id="toggleProjects" type="button"></button></div>
     </section>
 
     <!-- KEAHLIAN -->
@@ -408,7 +487,8 @@
         </article>
 
         <article class="cert">
-          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Associate Data Scientist VSGA">
+          <!-- Kalau transkrip nilai sudah ada, tambahkan atribut: data-full="assets/sertifikat/dts-associate-data-scientist.jpg|assets/sertifikat/dts-associate-data-scientist-nilai.jpg" -->
+          <button class="cert-thumb" type="button" data-title="Sertifikat Associate Data Scientist VSGA (Digital Talent Scholarship)" aria-label="Perbesar sertifikat Associate Data Scientist VSGA">
             <img src="assets/sertifikat/dts-associate-data-scientist.jpg" alt="Sertifikat Associate Data Scientist VSGA Digital Talent Scholarship" loading="lazy" onerror="this.parentElement.classList.add('empty')">
             <span class="ph">Sertifikat</span>
           </button>
@@ -434,12 +514,23 @@
         </article>
 
         <article class="cert">
-          <button class="cert-thumb" type="button" aria-label="Perbesar sertifikat Belajar Dasar Data Science">
-            <img src="assets/sertifikat/dicoding-data-science.jpg" alt="Sertifikat Belajar Dasar Data Science Dicoding" loading="lazy" onerror="this.parentElement.classList.add('empty')">
-            <span class="ph">Sertifikat</span>
+          <button class="cert-thumb pdf" type="button" data-full="assets/sertifikat/dicoding-data-science.pdf" data-title="Sertifikat Belajar Dasar Data Science Dicoding" aria-label="Perbesar sertifikat Belajar Dasar Data Science">
+            <span class="ph">📄 Lihat PDF</span>
           </button>
           <div class="cert-body">
             <h4>Belajar Dasar Data Science</h4>
+            <p class="org">Dicoding Indonesia</p>
+            <p class="date">Mei 2025</p>
+            <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="cert-thumb pdf" type="button" data-full="assets/sertifikat/dicoding-visualisasi-data.pdf" data-title="Sertifikat Belajar Dasar Visualisasi Data Dicoding" aria-label="Perbesar sertifikat Belajar Dasar Visualisasi Data">
+            <span class="ph">📄 Lihat PDF</span>
+          </button>
+          <div class="cert-body">
+            <h4>Belajar Dasar Visualisasi Data</h4>
             <p class="org">Dicoding Indonesia</p>
             <p class="date">Mei 2025</p>
             <a class="verify" href="#" target="_blank" rel="noopener">Verifikasi ↗</a>
@@ -552,13 +643,30 @@
   <button class="to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <!-- Detail proyek -->
+  <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <div class="modal-box">
+      <button class="lb-close modal-close" id="pmClose" aria-label="Tutup">✕</button>
+      <div class="modal-img" id="pmImgWrap"><img id="pmImg" src="" alt=""></div>
+      <div class="modal-body">
+        <h3 id="pmTitle"></h3>
+        <p class="pr-role" id="pmRole"></p>
+        <p id="pmDesc"></p>
+        <p class="tags" id="pmTags"></p>
+        <p class="links" id="pmLinks"></p>
+      </div>
+    </div>
+  </div>
+
   <!-- Pembesar gambar sertifikat -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lb-close" id="lbClose" aria-label="Tutup">✕</button>
+    <button class="lb-nav prev" id="lbPrev" aria-label="Sebelumnya">‹</button>
+    <button class="lb-nav next" id="lbNext" aria-label="Berikutnya">›</button>
     <figure>
       <img id="lbImg" src="" alt="">
       <iframe id="lbFrame" title="Sertifikat"></iframe>
-      <figcaption><span id="lbCaption"></span> &middot; <a id="lbOpen" href="#" target="_blank" rel="noopener">Buka di tab baru ↗</a></figcaption>
+      <figcaption><span id="lbCaption"></span><span id="lbCount"></span> &middot; <a id="lbOpen" href="#" target="_blank" rel="noopener">Buka di tab baru ↗</a></figcaption>
     </figure>
   </div>
 
