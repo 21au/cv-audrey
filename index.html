@@ -398,21 +398,98 @@
     <section id="pendidikan" class="reveal">
       <h2>Pendidikan</h2>
 
-      <article class="item">
-        <div class="item-head">
-          <h3>Politeknik Negeri Jember</h3>
-          <span class="date">Agu 2022 – Jun 2026</span>
-        </div>
-        <p class="org">Sarjana Teknik Informatika</p>
-      </article>
+      <div class="edu">
 
-      <article class="item">
-        <div class="item-head">
-          <h3>SMK Telkom Malang</h3>
-          <span class="date">Jul 2018 – Apr 2020</span>
-        </div>
-        <p class="org">Teknik Komputer dan Jaringan</p>
-      </article>
+        <!-- ===== PERGURUAN TINGGI ===== -->
+        <!-- Opsional: tambahkan IPK/gelar di bawah baris .edu-meta, contoh:
+             <span>🎓 IPK 3,xx</span> -->
+        <article class="edu-card" id="edu-polije">
+          <div class="edu-rail"></div>
+          <div class="edu-box">
+            <div class="edu-body">
+              <div class="edu-head">
+                <div class="edu-logo">
+                  <img src="assets/logo/polije.jpg" data-base="assets/logo/polije" alt="" onerror="imgFb(this)">
+                  <span class="mono">PJ</span>
+                </div>
+                <div>
+                  <p class="edu-badge">Lulusan 2026</p>
+                  <h3>Politeknik Negeri Jember</h3>
+                  <p class="edu-degree">Sarjana Terapan Teknik Informatika</p>
+                  <p class="edu-meta"><span>📍 Jember, Jawa Timur</span><span>🗓 Agu 2022 – Jun 2026</span></p>
+                </div>
+              </div>
+
+              <p class="edu-desc">Berfokus pada Software Engineering dan AI/Data Analysis: pengembangan web dan mobile, machine learning, serta analisis data. Studi ditutup dengan tugas akhir berupa sistem pemantauan pertumbuhan balita.</p>
+              <p class="tags"><span>Software Engineering</span><span>AI &amp; Data Analysis</span><span>Web &amp; Mobile</span><span>Machine Learning</span></p>
+
+              <button class="edu-toggle" type="button" aria-expanded="true" data-target="hl-polije">Sorotan selama kuliah <i>▾</i></button>
+              <div class="edu-hl-wrap" id="hl-polije">
+                <ul class="edu-hl">
+                  <li><button class="hl-link" type="button" data-project="kawantumbuh"><b>Tugas akhir: KawanTumbuh</b><span>Aplikasi pemantau pertumbuhan balita berbasis machine learning</span></button></li>
+                  <li><button class="hl-link" type="button" data-goto="#pengalaman"><b>Magang AI Engineer</b><span>CV. OTW Computer Gusaha · Agu – Des 2025</span></button></li>
+                  <li><button class="hl-link" type="button" data-goto="#pengalaman"><b>Magang PNBP: Tompokersan &amp; e-Badean</b><span>Bersama Politeknik Negeri Jember · 2024 – 2025</span></button></li>
+                  <li><button class="hl-link" type="button" data-goto="#sertifikat"><b>Sertifikasi kompetensi BNSP</b><span>Associate Data Scientist (2025) · Web Developer (2026)</span></button></li>
+                </ul>
+              </div>
+
+              <div class="edu-actions">
+                <button class="btn edu-view" type="button" data-full="assets/ijazah/ijazah-d4.pdf" data-title="Ijazah Sarjana Terapan Teknik Informatika, Politeknik Negeri Jember">Lihat ijazah</button>
+              </div>
+            </div>
+
+            <div class="edu-side">
+              <button class="edu-doc pdf" type="button" data-full="assets/ijazah/ijazah-d4.pdf" data-title="Ijazah Sarjana Terapan Teknik Informatika, Politeknik Negeri Jember" aria-label="Lihat ijazah Politeknik Negeri Jember">
+                <span class="ph">📄 Ijazah</span>
+              </button>
+              <p class="edu-doc-cap">Klik untuk memperbesar</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== SMK ===== -->
+        <article class="edu-card" id="edu-smk">
+          <div class="edu-rail"></div>
+          <div class="edu-box">
+            <div class="edu-body">
+              <div class="edu-head">
+                <div class="edu-logo">
+                  <img src="assets/logo/smk-telkom-malang.jpg" data-base="assets/logo/smk-telkom-malang" alt="" onerror="imgFb(this)">
+                  <span class="mono">ST</span>
+                </div>
+                <div>
+                  <p class="edu-badge">Lulusan 2020</p>
+                  <h3>SMK Telkom Malang</h3>
+                  <p class="edu-degree">Teknik Komputer dan Jaringan</p>
+                  <p class="edu-meta"><span>📍 Malang, Jawa Timur</span><span>🗓 Jul 2018 – Apr 2020</span></p>
+                </div>
+              </div>
+
+              <p class="edu-desc">Membangun fondasi di bidang komputer dan jaringan, lalu mempraktikkannya lewat magang memantau infrastruktur jaringan broadband di Telkom Akses.</p>
+              <p class="tags"><span>Komputer &amp; Jaringan</span><span>Infrastruktur Broadband</span></p>
+
+              <button class="edu-toggle" type="button" aria-expanded="true" data-target="hl-smk">Sorotan selama sekolah <i>▾</i></button>
+              <div class="edu-hl-wrap" id="hl-smk">
+                <ul class="edu-hl">
+                  <li><button class="hl-link" type="button" data-goto="#pengalaman"><b>Magang di Telkom Akses</b><span>Monitoring infrastruktur broadband · Pasuruan, 2019</span></button></li>
+                </ul>
+              </div>
+
+              <div class="edu-actions">
+                <button class="btn edu-view" type="button" data-full="assets/ijazah/ijazah-smk.pdf" data-title="Ijazah SMK Telkom Malang, Teknik Komputer dan Jaringan">Lihat ijazah</button>
+              </div>
+            </div>
+
+            <div class="edu-side">
+              <button class="edu-doc pdf" type="button" data-full="assets/ijazah/ijazah-smk.pdf" data-title="Ijazah SMK Telkom Malang, Teknik Komputer dan Jaringan" aria-label="Lihat ijazah SMK Telkom Malang">
+                <span class="ph">📄 Ijazah</span>
+              </button>
+              <p class="edu-doc-cap">Klik untuk memperbesar</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </section>
 
     <!-- SERTIFIKAT -->

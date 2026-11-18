@@ -118,18 +118,37 @@
   // ---------- 7. Filter proyek ----------
   var chips = document.querySelectorAll('.chip');
   var cards = document.querySelectorAll('.card');
+  var toggleBtn = document.getElementById('toggleProjects');
+  var LIMIT = 4;                       // jumlah proyek yang tampil sebelum "Lihat semua"
+  var curFilter = 'all', expanded = false;
+
+  function applyProjects() {
+    var shown = 0, total = 0;
+    cards.forEach(function (card) {
+      var kinds = (card.getAttribute('data-kind') || '').split(' ');
+      var match = curFilter === 'all' || kinds.indexOf(curFilter) !== -1;
+      if (match) total++;
+      var visible = match && (curFilter !== 'all' || expanded || shown < LIMIT);
+      if (visible) shown++;
+      card.classList.toggle('hide', !visible);
+    });
+    if (toggleBtn) {
+      var needToggle = curFilter === 'all' && total > LIMIT;
+      toggleBtn.style.display = needToggle ? '' : 'none';
+      toggleBtn.textContent = expanded ? 'Tampilkan lebih sedikit' : 'Lihat semua proyek (' + total + ')';
+    }
+  }
 
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       chips.forEach(function (c) { c.classList.remove('active'); });
       chip.classList.add('active');
-      var f = chip.getAttribute('data-filter');
-      cards.forEach(function (card) {
-        var kinds = (card.getAttribute('data-kind') || '').split(' ');
-        card.classList.toggle('hide', f !== 'all' && kinds.indexOf(f) === -1);
-      });
+      curFilter = chip.getAttribute('data-filter');
+      applyProjects();
     });
   });
+  if (toggleBtn) toggleBtn.addEventListener('click', function () { expanded = !expanded; applyProjects(); });
+  applyProjects();
 
   // ---------- 8. Salin email + notifikasi kecil ----------
   var toast = document.getElementById('toast');
@@ -174,19 +193,14 @@
 
   var lbFrame = document.getElementById('lbFrame');
   var lbOpen = document.getElementById('lbOpen');
+  var lbPrev = document.getElementById('lbPrev');
+  var lbNext = document.getElementById('lbNext');
+  var lbCount = document.getElementById('lbCount');
+  var lbFiles = [], lbIdx = 0, lbTitle = '';
 
-  function openLightbox(thumb) {
-    var img = thumb.querySelector('img');
-    var hasImg = img && !thumb.classList.contains('empty');
-    // data-full = berkas lengkap (boleh PDF); kalau tidak ada, pakai gambar thumbnail
-    var full = thumb.getAttribute('data-full') || (hasImg ? img.getAttribute('src') : '');
-    if (!full) {
-      showToast('Berkas sertifikat belum ditambahkan');
-      return;
-    }
-    var title = thumb.getAttribute('data-title') || (img ? img.alt : '');
+  function showFile() {
+    var full = lbFiles[lbIdx];
     var isPdf = /\.pdf$/i.test(full);
-
     lbImg.style.display = isPdf ? 'none' : 'inline-block';
     lbFrame.style.display = isPdf ? 'block' : 'none';
     if (isPdf) {
@@ -194,16 +208,46 @@
       lbImg.removeAttribute('src');
     } else {
       lbImg.src = full;
-      lbImg.alt = title;
+      lbImg.alt = lbTitle;
       lbFrame.removeAttribute('src');
     }
-    lbCaption.textContent = title;
+    lbCaption.textContent = lbTitle;
     lbOpen.href = full;
+    var multi = lbFiles.length > 1;
+    lbPrev.style.display = lbNext.style.display = multi ? 'flex' : 'none';
+    lbCount.textContent = multi ? ' (' + (lbIdx + 1) + '/' + lbFiles.length + ')' : '';
+  }
+
+  function openLightbox(thumb) {
+    var img = thumb.querySelector('img');
+    var hasImg = img && !thumb.classList.contains('empty');
+    // data-full = berkas lengkap (boleh PDF; beberapa berkas dipisah tanda |); kalau tidak ada, pakai thumbnail
+    var full = thumb.getAttribute('data-full') || (hasImg ? img.getAttribute('src') : '');
+    if (!full) {
+      showToast('Berkas sertifikat belum ditambahkan');
+      return;
+    }
+    lbFiles = full.split('|');
+    lbIdx = 0;
+    lbTitle = thumb.getAttribute('data-title') || (img ? img.alt : '');
+    showFile();
 
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
+  function stepFile(d) {
+    if (lbFiles.length < 2) return;
+    lbIdx = (lbIdx + d + lbFiles.length) % lbFiles.length;
+    showFile();
+  }
+  lbPrev.addEventListener('click', function () { stepFile(-1); });
+  lbNext.addEventListener('click', function () { stepFile(1); });
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') stepFile(-1);
+    if (e.key === 'ArrowRight') stepFile(1);
+  });
   function closeLightbox() {
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
@@ -211,7 +255,7 @@
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.cert-thumb').forEach(function (t) {
+  document.querySelectorAll('.cert-thumb, .edu-doc, .edu-view').forEach(function (t) {
     t.addEventListener('click', function () { openLightbox(t); });
   });
   document.getElementById('lbClose').addEventListener('click', closeLightbox);
@@ -221,6 +265,157 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeLightbox();
   });
+})();
+
+// ---------- 12. Detail proyek (klik kartu untuk membuka) ----------
+(function () {
+  var modal = document.getElementById('projectModal');
+  if (!modal) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var lastFocus = null;
+
+  function open(card) {
+    var wrap = card.querySelector('.card-img');
+    var img = wrap && wrap.querySelector('img');
+    var hasImg = img && !wrap.classList.contains('empty') && (img.currentSrc || img.src);
+
+    $('pmImgWrap').classList.toggle('none', !hasImg);
+    if (hasImg) { $('pmImg').src = img.currentSrc || img.src; $('pmImg').alt = img.alt; }
+
+    $('pmTitle').textContent = card.querySelector('h3').textContent;
+    var role = card.querySelector('.pr-role');
+    $('pmRole').textContent = role ? role.textContent : '';
+    var desc = card.querySelector('p:not(.pr-role):not(.tags):not(.links)');
+    $('pmDesc').textContent = desc ? desc.textContent : '';
+    var tags = card.querySelector('.tags');
+    $('pmTags').innerHTML = tags ? tags.innerHTML : '';
+
+    var links = $('pmLinks');
+    links.innerHTML = '';
+    card.querySelectorAll('.links a').forEach(function (a) {
+      if (a.getAttribute('href') !== '#') links.appendChild(a.cloneNode(true));
+    });
+
+    lastFocus = document.activeElement;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    $('pmClose').focus();
+  }
+  function close() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;               // klik link GitHub tetap membuka link
+      open(card);
+    });
+    card.addEventListener('keydown', function (e) {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === card) { e.preventDefault(); open(card); }
+    });
+  });
+  $('pmClose').addEventListener('click', close);
+  modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+})();
+
+// ---------- 13. Statistik di hero (dihitung otomatis dari isi halaman) ----------
+(function () {
+  var map = { proyek: '#proyek .card', pengalaman: '#pengalaman .item', sertifikat: '#sertifikat .cert' };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-stat]').forEach(function (el) {
+    var n = document.querySelectorAll(map[el.getAttribute('data-stat')]).length;
+    if (!n) return;
+    if (reduce) { el.textContent = n; return; }
+    var start = null;
+    requestAnimationFrame(function step(t) {
+      if (start === null) start = t;
+      var p = Math.min((t - start) / 900, 1);
+      el.textContent = Math.round(n * p);
+      if (p < 1) requestAnimationFrame(step);
+    });
+  });
+})();
+
+// ---------- 14. Pendidikan: timeline, sorotan, tilt, ijazah ----------
+(function () {
+  var cards = document.querySelectorAll('.edu-card');
+  if (!cards.length) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // a. Garis timeline "tergambar" saat kartu terlihat
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(function (c) { io.observe(c); });
+  } else {
+    cards.forEach(function (c) { c.classList.add('in'); });
+  }
+
+  // b. Sembunyikan bagian ijazah kalau berkas PDF-nya belum ada
+  cards.forEach(function (card) {
+    var doc = card.querySelector('.edu-doc');
+    if (!doc || !window.fetch) return;
+    fetch(doc.getAttribute('data-full'), { method: 'HEAD' })
+      .then(function (r) { if (!r.ok) card.classList.add('nodoc'); })
+      .catch(function () { card.classList.add('nodoc'); });
+  });
+
+  // c. Buka/tutup "Sorotan"
+  document.querySelectorAll('.edu-toggle').forEach(function (btn) {
+    var wrap = document.getElementById(btn.getAttribute('data-target'));
+    if (!wrap) return;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      wrap.classList.toggle('closed', open);
+    });
+  });
+
+  // d. Sorotan yang bisa diklik: buka detail proyek atau loncat ke bagian terkait
+  document.querySelectorAll('.hl-link').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var slug = b.getAttribute('data-project');
+      if (slug) {
+        var c = document.querySelector('.card[data-slug="' + slug + '"]');
+        if (c) c.click();
+        return;
+      }
+      var sel = b.getAttribute('data-goto');
+      var t = sel && document.querySelector(sel);
+      if (!t) return;
+      t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      t.classList.add('flash');
+      setTimeout(function () { t.classList.remove('flash'); }, 1400);
+    });
+  });
+
+  // e. Efek miring halus + cahaya mengikuti kursor (hanya perangkat dengan mouse)
+  if (!reduce && window.matchMedia && matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.edu-box').forEach(function (box) {
+      box.addEventListener('mousemove', function (e) {
+        var r = box.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        box.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        box.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+        box.style.setProperty('--ry', ((x - 0.5) * 3).toFixed(2) + 'deg');
+        box.style.setProperty('--rx', ((0.5 - y) * 2.4).toFixed(2) + 'deg');
+      });
+      box.addEventListener('mouseleave', function () {
+        box.style.setProperty('--rx', '0deg');
+        box.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
 })();
 
 // ---------- 11. Klik foto utama untuk ganti latar putih/merah ----------
@@ -244,7 +439,7 @@
 // ---------- 10. Thumbnail otomatis dari halaman pertama PDF ----------
 // Dipakai untuk kartu yang berkas gambarnya tidak ada tetapi PDF-nya ada.
 (function () {
-  var thumbs = document.querySelectorAll('.cert-thumb[data-full$=".pdf"]');
+  var thumbs = document.querySelectorAll('.cert-thumb[data-full$=".pdf"], .edu-doc[data-full$=".pdf"]');
   if (!thumbs.length || !('IntersectionObserver' in window)) return;
 
   var PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
