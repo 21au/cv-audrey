@@ -327,7 +327,7 @@
 
 // ---------- 13. Statistik di hero (dihitung otomatis dari isi halaman) ----------
 (function () {
-  var map = { proyek: '#proyek .card', pengalaman: '#pengalaman .item', sertifikat: '#sertifikat .cert' };
+  var map = { proyek: '#proyek .card', pengalaman: '#pengalaman .item', sertifikat: '#sertifikat .cert', teknologi: '#keahlian .tags span' };
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-stat]').forEach(function (el) {
     var n = document.querySelectorAll(map[el.getAttribute('data-stat')]).length;
@@ -416,6 +416,76 @@
       });
     });
   }
+})();
+
+// ---------- 15. Navbar, hero, dan pilar "Tentang" ----------
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+  var menu = document.getElementById('menu');
+  var ind = document.getElementById('navInd');
+
+  // a. Navbar mengecil dan berlatar kaca setelah di-scroll
+  function onScroll() { if (nav) nav.classList.toggle('scrolled', window.scrollY > 24); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // b. Penanda geser: mengikuti hover, lalu kembali ke bagian yang sedang aktif
+  if (menu && ind) {
+    var links = Array.prototype.slice.call(menu.querySelectorAll('a'));
+    var lastActive = null;
+
+    var place = function (link) {
+      links.forEach(function (l) { l.classList.toggle('lit', l === link); });
+      if (!link || getComputedStyle(ind).display === 'none') { ind.style.opacity = 0; return; }
+      ind.style.width = link.offsetWidth + 'px';
+      ind.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      ind.style.opacity = 1;
+    };
+    var rest = function () { place(menu.querySelector('a.active')); };
+
+    links.forEach(function (l) {
+      l.addEventListener('mouseenter', function () { place(l); });
+      l.addEventListener('focus', function () { place(l); });
+    });
+    menu.addEventListener('mouseleave', rest);
+    menu.addEventListener('focusout', rest);
+    new MutationObserver(function () {
+      var a = menu.querySelector('a.active');
+      if (a !== lastActive) { lastActive = a; rest(); }
+    }).observe(menu, { attributes: true, attributeFilter: ['class'], subtree: true });
+    window.addEventListener('resize', rest);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(rest);
+    rest();
+  }
+
+  // c. Foto dan lencana bergeser halus mengikuti kursor (hanya perangkat dengan mouse)
+  var hero = document.querySelector('.hero');
+  var wrap = document.getElementById('photoWrap');
+  if (hero && wrap && !reduce && window.matchMedia && matchMedia('(hover: hover)').matches) {
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      wrap.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+      wrap.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
+    });
+    hero.addEventListener('mouseleave', function () {
+      wrap.style.setProperty('--mx', 0);
+      wrap.style.setProperty('--my', 0);
+    });
+  }
+
+  // d. Kartu pilar: filter proyek terkait atau loncat ke bagian tertentu
+  document.querySelectorAll('.pillar-link').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      if (f) {
+        var chip = document.querySelector('.chip[data-filter="' + f + '"]');
+        if (chip) chip.click();
+      }
+      var t = document.querySelector(b.getAttribute('data-goto') || '#proyek');
+      if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
 })();
 
 // ---------- 11. Klik foto utama untuk ganti latar putih/merah ----------

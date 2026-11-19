@@ -37,10 +37,13 @@
   <!-- Garis progres scroll -->
   <div class="progress" id="progress"></div>
 
-  <header class="nav">
-    <a href="#top" class="logo">Audrey.</a>
+  <header class="nav" id="nav">
+    <a href="#top" class="logo" aria-label="Kembali ke atas">
+      <span class="logo-mark">AP</span><span class="logo-text">Audrey Pramudita</span>
+    </a>
 
     <nav id="menu" aria-label="Navigasi utama">
+      <span class="nav-ind" id="navInd" aria-hidden="true"></span>
       <a href="#tentang">Tentang</a>
       <a href="#pengalaman">Pengalaman</a>
       <a href="#proyek">Proyek</a>
@@ -51,6 +54,7 @@
     </nav>
 
     <div class="nav-actions">
+      <a class="nav-cta" href="#kontak">Hubungi</a>
       <button class="icon-btn" id="themeToggle" aria-label="Ganti tema">☾</button>
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
     </div>
@@ -59,42 +63,117 @@
   <main id="top">
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="hero-text">
-        <p class="eyebrow">Halo, saya</p>
-        <h1>Audrey Pramudita Sudarmanto</h1>
-        <p class="role"><span id="typed">Software Engineer</span><span class="caret"></span></p>
+        <p class="status"><span class="dot"></span>Terbuka untuk peluang kerja</p>
+        <h1>Audrey Pramudita <em>Sudarmanto</em></h1>
+        <p class="role">Saya seorang <span id="typed">Software Engineer</span><span class="caret"></span></p>
         <p class="lead">Lulusan Teknik Informatika yang berfokus pada Software Engineering dan AI/Data Analysis: dari aplikasi web dan mobile sampai solusi machine learning dan LLM.</p>
+
         <div class="cta">
           <a class="btn primary" href="#kontak">Hubungi saya</a>
           <a class="btn" href="#proyek">Lihat proyek</a>
-          <a class="btn" id="cvDownload" href="assets/CV-Audrey-Pramudita-Sudarmanto.pdf" download>Unduh CV</a>
+          <a class="btn ghost" id="cvDownload" href="assets/CV-Audrey-Pramudita-Sudarmanto.pdf" download>Unduh CV ↓</a>
         </div>
-        <div class="stats">
-          <div><b data-stat="proyek">13</b><span>Proyek</span></div>
-          <div><b data-stat="pengalaman">6</b><span>Pengalaman</span></div>
-          <div><b data-stat="sertifikat">14</b><span>Sertifikat</span></div>
+
+        <div class="socials">
+          <a href="https://github.com/2lau" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.26.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/audreypramudita-sudarmanto-599079208" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="mailto:audreypramudita@gmail.com" aria-label="Email" title="Email">
+            <svg class="stroke" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </a>
+        </div>
+
+        <div class="facts">
+          <div><span>Lokasi</span><b>Lumajang, Jawa Timur</b></div>
+          <div><span>Pendidikan</span><b>Teknik Informatika, Polije</b></div>
+          <div><span>Fokus</span><b>Software · AI · Data</b></div>
         </div>
       </div>
+
       <!-- Foto utama: klik untuk ganti latar putih/merah. File ada di folder assets/ -->
-      <div class="photo-wrap">
-        <div class="photo" id="photo" role="button" tabindex="0" aria-label="Klik untuk ganti foto" title="Klik untuk ganti latar foto">
+      <div class="photo-wrap" id="photoWrap">
+        <div class="photo-ring" aria-hidden="true"></div>
+        <div class="photo" id="photo" role="button" tabindex="0" aria-label="Klik untuk ganti latar foto" title="Klik untuk ganti latar foto">
           <img class="p1" src="assets/foto-putih.png" alt="Foto Audrey Pramudita Sudarmanto"
                onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');">
           <img class="p2" src="assets/foto-merah.png" alt="" onerror="this.remove();">
           <span class="initials">AP</span>
         </div>
+        <span class="float f1">🎓 Lulusan Polije 2026</span>
+        <span class="float f2">✔ Bersertifikat BNSP</span>
+        <span class="float f3">⚡ AI · Web · Mobile</span>
         <p class="photo-hint">Klik foto untuk ganti latar</p>
       </div>
+
+      <div class="hero-stats">
+        <a href="#proyek"><b data-stat="proyek">13</b><span>Proyek</span></a>
+        <a href="#pengalaman"><b data-stat="pengalaman">6</b><span>Pengalaman</span></a>
+        <a href="#sertifikat"><b data-stat="sertifikat">14</b><span>Sertifikat</span></a>
+        <a href="#keahlian"><b data-stat="teknologi">37</b><span>Teknologi</span></a>
+      </div>
     </section>
+
+    <!-- TICKER TEKNOLOGI -->
+    <div class="ticker" aria-label="Teknologi yang saya gunakan">
+      <div class="ticker-track">
+        <div class="ticker-set"><span>Python</span><span>PHP</span><span>Java</span><span>SQL</span><span>Laravel</span><span>React</span><span>Bootstrap</span><span>Pandas</span><span>LangChain</span><span>Prophet</span><span>Machine Learning</span><span>LLM</span><span>RAG</span><span>XGBoost</span><span>Scikit-Learn</span><span>MLflow</span><span>SHAP</span><span>FastAPI</span><span>Supabase</span><span>REST API</span><span>n8n</span><span>Git</span><span>Power BI</span><span>BigQuery</span><span>Figma</span><span>ESP32</span></div>
+        <div class="ticker-set dup" aria-hidden="true"><span>Python</span><span>PHP</span><span>Java</span><span>SQL</span><span>Laravel</span><span>React</span><span>Bootstrap</span><span>Pandas</span><span>LangChain</span><span>Prophet</span><span>Machine Learning</span><span>LLM</span><span>RAG</span><span>XGBoost</span><span>Scikit-Learn</span><span>MLflow</span><span>SHAP</span><span>FastAPI</span><span>Supabase</span><span>REST API</span><span>n8n</span><span>Git</span><span>Power BI</span><span>BigQuery</span><span>Figma</span><span>ESP32</span></div>
+      </div>
+    </div>
 
     <!-- TENTANG -->
     <section id="tentang" class="reveal">
       <h2>Tentang</h2>
-      <p>Lulusan Teknik Informatika (Politeknik Negeri Jember) yang teliti dan berfokus pada Software Engineering serta AI/Data Analysis. Terbiasa menjembatani pengembangan web dan mobile yang skalabel (Laravel, React) dengan solusi data tingkat lanjut seperti Machine Learning, LLM, dan RAG.</p>
-      <p>Berpengalaman menyelesaikan proyek end-to-end, mulai dari prototipe UI/UX dan pengujian kualitas berstandar ISO 25010 hingga pipeline otomasi berbasis AI. Senang memanfaatkan data dan arsitektur perangkat lunak yang kokoh untuk memecahkan masalah bisnis yang kompleks dan meningkatkan efisiensi operasional.</p>
-      <p>Terbuka untuk peluang di bidang Software Engineering, AI Engineering, dan Data Analysis.</p>
-      <p class="meta">📍 Lumajang, Jawa Timur, Indonesia &nbsp;&middot;&nbsp; 🌐 Bahasa Indonesia (native), Inggris (menengah)</p>
+
+      <div class="about">
+        <div class="about-text">
+          <p class="about-lead">Teliti dalam detail, menjembatani pengembangan perangkat lunak dengan solusi data dan AI.</p>
+          <p>Lulusan Teknik Informatika (Politeknik Negeri Jember) yang berfokus pada Software Engineering serta AI/Data Analysis. Terbiasa menjembatani pengembangan web dan mobile yang skalabel (Laravel, React) dengan solusi data tingkat lanjut seperti Machine Learning, LLM, dan RAG.</p>
+          <p>Berpengalaman menyelesaikan proyek end-to-end, mulai dari prototipe UI/UX dan pengujian kualitas berstandar ISO 25010 hingga pipeline otomasi berbasis AI. Senang memanfaatkan data dan arsitektur perangkat lunak yang kokoh untuk memecahkan masalah bisnis yang kompleks dan meningkatkan efisiensi operasional.</p>
+        </div>
+
+        <aside class="about-card">
+          <h3>Sekilas</h3>
+          <dl>
+            <div><dt>Lokasi</dt><dd>Lumajang, Jawa Timur, Indonesia</dd></div>
+            <div><dt>Pendidikan</dt><dd>Sarjana Terapan Teknik Informatika, Politeknik Negeri Jember</dd></div>
+            <div><dt>Bahasa</dt><dd><span class="lang">Indonesia · Native</span><span class="lang">Inggris · Menengah</span></dd></div>
+            <div><dt>Fokus</dt><dd>Software Engineering, AI &amp; Data Analysis</dd></div>
+            <div><dt>Status</dt><dd><span class="status-inline"><span class="dot"></span>Terbuka untuk peluang</span></dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar">
+          <span class="pillar-ico"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+          <h3>Software Engineering</h3>
+          <p>Aplikasi web, mobile, dan desktop lengkap dengan backend, database, serta autentikasi multi-peran.</p>
+          <p class="tags"><span>Laravel</span><span>React</span><span>Java</span><span>Supabase</span></p>
+          <button class="pillar-link" type="button" data-filter="web">Lihat proyek web &amp; mobile <i>→</i></button>
+        </article>
+
+        <article class="pillar">
+          <span class="pillar-ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7.5 7.5l3.5 9M16.5 7.5L13 16.5M8 6h8"/></svg></span>
+          <h3>AI &amp; Data Analysis</h3>
+          <p>Model machine learning, forecasting time series, LLM dengan RAG, serta analisis dan visualisasi data.</p>
+          <p class="tags"><span>Python</span><span>XGBoost</span><span>Prophet</span><span>LangChain</span><span>Power BI</span></p>
+          <button class="pillar-link" type="button" data-filter="ai">Lihat proyek AI &amp; data <i>→</i></button>
+        </article>
+
+        <article class="pillar">
+          <span class="pillar-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <h3>UI/UX &amp; Quality</h3>
+          <p>Riset pengguna, wireframe, dan prototipe di Figma, serta pengujian UAT dengan standar ISO 25010.</p>
+          <p class="tags"><span>Figma</span><span>UAT</span><span>ISO 25010</span></p>
+          <button class="pillar-link" type="button" data-goto="#pengalaman">Lihat pengalaman UI/UX <i>→</i></button>
+        </article>
+      </div>
     </section>
 
     <!-- PENGALAMAN -->
