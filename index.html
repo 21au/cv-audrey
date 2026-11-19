@@ -39,7 +39,8 @@
 
   <header class="nav" id="nav">
     <a href="#top" class="logo" aria-label="Kembali ke atas">
-      <span class="logo-mark">AP</span><span class="logo-text">Audrey Pramudita</span>
+      <img src="\assets\logo\LOGO Audrey.jpeg" alt="Logo Audrey Pramudita" class="logo-mark" />
+  <span class="logo-text">Audrey Pramudita</span>
     </a>
 
     <nav id="menu" aria-label="Navigasi utama">
@@ -176,83 +177,267 @@
       </div>
     </section>
 
-    <!-- PENGALAMAN -->
+   <!-- PENGALAMAN -->
     <section id="pengalaman" class="reveal">
       <h2>Pengalaman</h2>
 
-      <article class="item">
-        <div class="item-head">
-          <h3>Intern, AI Engineer</h3>
-          <span class="date">Agu 2025 – Des 2025</span>
-        </div>
-        <p class="org">CV. OTW Computer Gusaha &middot; Surabaya, Jawa Timur</p>
-        <ul>
-          <li>Mengembangkan dan mengoptimalkan model machine learning untuk klasifikasi data korporat.</li>
-          <li>Mengintegrasikan layanan web AI dan pipeline parsing otomatis untuk mempercepat operasional data.</li>
-        </ul>
-      </article>
+      <p class="exp-intro">
+        Rekam jejak magang dan proyek berbasis industri di bidang AI &amp; data, perancangan UI/UX, serta pengembangan sistem dan infrastruktur.
+      </p>
 
-      <article class="item">
-        <div class="item-head">
-          <h3>UI/UX Designer (Project-Based Virtual Intern)</h3>
-          <span class="date">Mei 2025 – Jun 2025</span>
-        </div>
-        <p class="org">FundEx x Rakamin Academy</p>
-        <ul>
-          <li>Melakukan riset pengguna dan menerjemahkan kebutuhan menjadi wireframe serta user flow yang menyeluruh.</li>
-          <li>Membuat prototipe interaktif high-fidelity di Figma untuk mengoptimalkan navigasi dashboard investasi.</li>
-        </ul>
-      </article>
+      <div class="exp-filters" role="group" aria-label="Filter pengalaman">
+        <button class="exp-chip active" data-exp="all" type="button">Semua (6)</button>
+        <button class="exp-chip" data-exp="ai" type="button">AI &amp; Data</button>
+        <button class="exp-chip" data-exp="uiux" type="button">UI/UX</button>
+        <button class="exp-chip" data-exp="dev" type="button">Software &amp; Jaringan</button>
+      </div>
 
-      <article class="item">
-        <div class="item-head">
-          <h3>UI/UX Designer (Project-Based Virtual Intern)</h3>
-          <span class="date">Feb 2025 – Mar 2025</span>
-        </div>
-        <p class="org">Nuri x Rakamin Academy</p>
-        <ul>
-          <li>Merancang antarmuka e-commerce yang berpusat pada pengguna untuk meningkatkan engagement.</li>
-          <li>Mengiterasi layout berdasarkan umpan balik usability testing agar sesuai pedoman aplikasi mobile modern.</li>
-        </ul>
-      </article>
+      <div class="exp-list">
 
-      <article class="item">
-        <div class="item-head">
-          <h3>Intern PNBP</h3>
-          <span class="date">Jun 2024 – Mar 2025</span>
-        </div>
-        <p class="org">Tompokersan &amp; Politeknik Negeri Jember</p>
-        <ul>
-          <li>Berkolaborasi pada inisiatif perangkat lunak informasi tingkat daerah, berperan sebagai penghubung kebutuhan teknis.</li>
-          <li>Membantu pengelolaan database, penyusunan logika backend, dan sinkronisasi sistem.</li>
-        </ul>
-      </article>
+        <!-- 1. AI Engineer -->
+        <article class="exp-card" data-exp="ai" tabindex="0" aria-expanded="false">
+          <div class="exp-row">
+            <div class="exp-logo">
+              <img src="assets/logo/logo -otw computer.jpg" data-base="assets/logo/otw" alt="" onerror="imgFb(this)">
+              <span class="exp-mono">OTW</span>
+            </div>
 
-      <article class="item">
-        <div class="item-head">
-          <h3>Intern</h3>
-          <span class="date">Feb 2024 – Sep 2024</span>
-        </div>
-        <p class="org">e-Badean &amp; Politeknik Negeri Jember</p>
-        <ul>
-          <li>Berkontribusi mengembangkan modul backend manajemen surat resmi dengan Laravel.</li>
-          <li>Memastikan autentikasi multi-peran berjalan lancar dan mempercepat rilis fitur aplikasi.</li>
-        </ul>
-      </article>
+            <div class="exp-main">
+              <div class="exp-top">
+                <div>
+                  <h3>Intern, AI Engineer</h3>
+                  <p class="exp-org">CV. OTW Computer Gusaha &middot; Surabaya, Jawa Timur</p>
+                </div>
+                <span class="exp-period">Agu 2025 – Des 2025</span>
+              </div>
 
-      <article class="item">
-        <div class="item-head">
-          <h3>Intern</h3>
-          <span class="date">Jul 2019 – Sep 2019</span>
-        </div>
-        <p class="org">Telkom Akses &middot; Kota Pasuruan, Jawa Timur</p>
-        <ul>
-          <li>Memantau operasional infrastruktur jaringan broadband dan mendokumentasikan layout data lokasi.</li>
-          <li>Membantu tim teknis dalam diagnostik, konfigurasi, dan pemecahan masalah jaringan dasar.</li>
-        </ul>
-      </article>
+              <ul class="exp-points">
+                <li>Mengembangkan dan mengoptimalkan model machine learning untuk klasifikasi data korporat.</li>
+                <li>Mengintegrasikan layanan web AI dan pipeline parsing otomatis untuk mempercepat operasional data.</li>
+              </ul>
+
+              <div class="exp-foot">
+                <div class="exp-tags">
+                  <span>Machine Learning</span>
+                  <span>Python</span>
+                  <span>Data Parsing</span>
+                  <span>AI Web Service</span>
+                </div>
+                <button class="exp-more" type="button">Rincian peran <i aria-hidden="true">+</i></button>
+              </div>
+
+              <div class="exp-detail">
+                <div class="exp-detail-inner">
+                  <p><strong>Fokus utama:</strong> Menyusun alur pemrosesan dokumen dan klasifikasi data agar lebih konsisten serta mengurangi pekerjaan manual berulang pada alur data perusahaan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. UI/UX FundEx -->
+        <article class="exp-card" data-exp="uiux" tabindex="0" aria-expanded="false">
+          <div class="exp-row">
+            <div class="exp-logo">
+              <img src="assets/logo/logo fundex.jpeg" data-base="assets/logo/fundex" alt="" onerror="imgFb(this)">
+              <span class="exp-mono">FX</span>
+            </div>
+
+            <div class="exp-main">
+              <div class="exp-top">
+                <div>
+                  <h3>UI/UX Designer <span class="exp-badge">Project-Based Virtual Intern</span></h3>
+                  <p class="exp-org">FundEx &times; Rakamin Academy</p>
+                </div>
+                <span class="exp-period">Mei 2025 – Jun 2025</span>
+              </div>
+
+              <ul class="exp-points">
+                <li>Melakukan riset pengguna dan menerjemahkan kebutuhan menjadi wireframe serta user flow yang menyeluruh.</li>
+                <li>Membuat prototipe interaktif high-fidelity di Figma untuk mengoptimalkan navigasi dashboard investasi.</li>
+              </ul>
+
+              <div class="exp-foot">
+                <div class="exp-tags">
+                  <span>Figma</span>
+                  <span>User Flow</span>
+                  <span>Wireframe</span>
+                  <span>Interactive Prototype</span>
+                </div>
+                <button class="exp-more" type="button">Rincian peran <i aria-hidden="true">+</i></button>
+              </div>
+
+              <div class="exp-detail">
+                <div class="exp-detail-inner">
+                  <p><strong>Fokus utama:</strong> Menyederhanakan alur eksplorasi informasi pada dashboard investasi agar lebih mudah dipahami dan dinavigasi pengguna.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. UI/UX Nuri -->
+        <article class="exp-card" data-exp="uiux" tabindex="0" aria-expanded="false">
+          <div class="exp-row">
+            <div class="exp-logo">
+              <img src="assets/logo/Logo-nuri.jpeg" data-base="assets/logo/nuri" alt="" onerror="imgFb(this)">
+              <span class="exp-mono">NR</span>
+            </div>
+
+            <div class="exp-main">
+              <div class="exp-top">
+                <div>
+                  <h3>UI/UX Designer <span class="exp-badge">Project-Based Virtual Intern</span></h3>
+                  <p class="exp-org">Nuri &times; Rakamin Academy</p>
+                </div>
+                <span class="exp-period">Feb 2025 – Mar 2025</span>
+              </div>
+
+              <ul class="exp-points">
+                <li>Merancang antarmuka e-commerce yang berpusat pada pengguna untuk meningkatkan engagement.</li>
+                <li>Mengiterasi layout berdasarkan umpan balik usability testing agar sesuai pedoman aplikasi mobile modern.</li>
+              </ul>
+
+              <div class="exp-foot">
+                <div class="exp-tags">
+                  <span>Figma</span>
+                  <span>Mobile UI/UX</span>
+                  <span>Usability Testing</span>
+                </div>
+                <button class="exp-more" type="button">Rincian peran <i aria-hidden="true">+</i></button>
+              </div>
+
+              <div class="exp-detail">
+                <div class="exp-detail-inner">
+                  <p><strong>Fokus utama:</strong> Memperbaiki tata letak perjalanan belanja di perangkat mobile berdasarkan evaluasi pengalaman pengguna dan konsistensi komponen.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Intern PNBP Tompokersan -->
+        <article class="exp-card" data-exp="dev" tabindex="0" aria-expanded="false">
+          <div class="exp-row">
+            <div class="exp-logo">
+              <img src="assets/logo/polije.jpg" data-base="assets/logo/polije" alt="" onerror="imgFb(this)">
+              <span class="exp-mono">TP</span>
+            </div>
+
+            <div class="exp-main">
+              <div class="exp-top">
+                <div>
+                  <h3>Intern PNBP</h3>
+                  <p class="exp-org">Tompokersan &amp; Politeknik Negeri Jember</p>
+                </div>
+                <span class="exp-period">Jun 2024 – Mar 2025</span>
+              </div>
+
+              <ul class="exp-points">
+                <li>Berkolaborasi pada inisiatif perangkat lunak informasi tingkat daerah, berperan sebagai penghubung kebutuhan teknis.</li>
+                <li>Membantu pengelolaan database, penyusunan logika backend, dan sinkronisasi sistem.</li>
+              </ul>
+
+              <div class="exp-foot">
+                <div class="exp-tags">
+                  <span>Backend Logic</span>
+                  <span>Database</span>
+                  <span>System Sync</span>
+                </div>
+                <button class="exp-more" type="button">Rincian peran <i aria-hidden="true">+</i></button>
+              </div>
+
+              <div class="exp-detail">
+                <div class="exp-detail-inner">
+                  <p><strong>Fokus utama:</strong> Menyelaraskan kebutuhan operasional instansi dengan struktur basis data serta konsistensi alur data antarmodul.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Intern e-Badean -->
+        <article class="exp-card" data-exp="dev" tabindex="0" aria-expanded="false">
+          <div class="exp-row">
+            <div class="exp-logo">
+              <img src="assets/logo/polije.jpg" data-base="assets/logo/polije" alt="" onerror="imgFb(this)">
+              <span class="exp-mono">EB</span>
+            </div>
+
+            <div class="exp-main">
+              <div class="exp-top">
+                <div>
+                  <h3>Intern</h3>
+                  <p class="exp-org">e-Badean &amp; Politeknik Negeri Jember</p>
+                </div>
+                <span class="exp-period">Feb 2024 – Sep 2024</span>
+              </div>
+
+              <ul class="exp-points">
+                <li>Berkontribusi mengembangkan modul backend manajemen surat resmi dengan Laravel.</li>
+                <li>Memastikan autentikasi multi-peran berjalan lancar dan mempercepat rilis fitur aplikasi.</li>
+              </ul>
+
+              <div class="exp-foot">
+                <div class="exp-tags">
+                  <span>Laravel</span>
+                  <span>Multi-Role Auth</span>
+                  <span>Backend Dev</span>
+                </div>
+                <button class="exp-more" type="button">Rincian peran <i aria-hidden="true">+</i></button>
+              </div>
+
+              <div class="exp-detail">
+                <div class="exp-detail-inner">
+                  <p><strong>Fokus utama:</strong> Mendukung pengelolaan administrasi surat resmi melalui hak akses terstruktur sesuai peran pengguna di dalam sistem.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. Intern Telkom Akses -->
+        <article class="exp-card" data-exp="dev" tabindex="0" aria-expanded="false">
+          <div class="exp-row">
+            <div class="exp-logo">
+              <img src="assets/logo/telkom-akses.png" data-base="assets/logo/telkom-akses" alt="" onerror="imgFb(this)">
+              <span class="exp-mono">TA</span>
+            </div>
+
+            <div class="exp-main">
+              <div class="exp-top">
+                <div>
+                  <h3>Intern</h3>
+                  <p class="exp-org">Telkom Akses &middot; Kota Pasuruan, Jawa Timur</p>
+                </div>
+                <span class="exp-period">Jul 2019 – Sep 2019</span>
+              </div>
+
+              <ul class="exp-points">
+                <li>Memantau operasional infrastruktur jaringan broadband dan mendokumentasikan layout data lokasi.</li>
+                <li>Membantu tim teknis dalam diagnostik, konfigurasi, dan pemecahan masalah jaringan dasar.</li>
+              </ul>
+
+              <div class="exp-foot">
+                <div class="exp-tags">
+                  <span>Broadband</span>
+                  <span>Network Diagnostics</span>
+                  <span>Documentation</span>
+                </div>
+                <button class="exp-more" type="button">Rincian peran <i aria-hidden="true">+</i></button>
+              </div>
+
+              <div class="exp-detail">
+                <div class="exp-detail-inner">
+                  <p><strong>Fokus utama:</strong> Mencatat kondisi infrastruktur lapangan secara rapi dan membantu pengecekan konektivitas jaringan dasar bersama tim.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </section>
-
     <!-- PROYEK -->
     <section id="proyek" class="reveal">
       <h2>Proyek</h2>
@@ -781,13 +966,54 @@
     <!-- KONTAK -->
     <section id="kontak" class="reveal">
       <h2>Kontak</h2>
-      <p>Tertarik berkolaborasi atau punya peluang untuk dibicarakan? Hubungi saya.</p>
-      <p class="contact-links">
-        <a class="btn primary" href="mailto:audreypramudita@gmail.com">Kirim email</a>
-        <button class="btn" id="copyEmail" type="button" data-email="audreypramudita@gmail.com">Salin email</button>
-        <a class="btn" href="https://www.linkedin.com/in/audreypramudita-sudarmanto-599079208" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/2lau" target="_blank" rel="noopener">GitHub</a>
-      </p>
+      
+      <div class="contact-layout">
+        <!-- Kolom Kiri: Informatif & Direct Email -->
+        <div class="contact-info">
+          <p class="contact-desc">
+            Tertarik berkolaborasi, berdiskusi seputar proyek, atau memiliki peluang menarik untuk dibicarakan? Silakan hubungi saya melalui kanal berikut.
+          </p>
+          
+          <div class="email-box">
+            <span class="email-label">Surel Utama</span>
+            <div class="email-action">
+              <a href="mailto:audreypramudita@gmail.com" class="email-address">audreypramudita@gmail.com</a>
+              <button class="btn-copy" id="copyEmail" type="button" data-email="audreypramudita@gmail.com" aria-label="Salin alamat email">
+                <span class="copy-text">Salin</span>
+              </button>
+            </div>
+          </div>
+
+          <p class="contact-meta">Berbasis di Lumajang, Jawa Timur (WIB) • Terbuka untuk peluang kerja &amp; kolaborasi</p>
+        </div>
+
+        <!-- Kolom Kanan: Tautan Sosial Interaktif -->
+        <div class="contact-directory">
+          <a class="directory-item" href="https://www.linkedin.com/in/audreypramudita-sudarmanto-599079208" target="_blank" rel="noopener">
+            <div class="dir-left">
+              <span class="dir-title">LinkedIn</span>
+              <span class="dir-sub">Koneksi profesional &amp; riwayat karier</span>
+            </div>
+            <span class="dir-arrow">↗</span>
+          </a>
+
+          <a class="directory-item" href="https://github.com/2lau" target="_blank" rel="noopener">
+            <div class="dir-left">
+              <span class="dir-title">GitHub</span>
+              <span class="dir-sub">@2lau • Repositori &amp; kode sumber</span>
+            </div>
+            <span class="dir-arrow">↗</span>
+          </a>
+
+          <a class="directory-item" href="https://www.instagram.com/lysseble?igsh=MTkwaHQ3bDVnN3F0cA==" target="_blank" rel="noopener">
+            <div class="dir-left">
+              <span class="dir-title">Instagram</span>
+              <span class="dir-sub">@lysseble • Jurnal visual &amp; keseharian</span>
+            </div>
+            <span class="dir-arrow">↗</span>
+          </a>
+        </div>
+      </div>
     </section>
 
   </main>

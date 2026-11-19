@@ -7,35 +7,40 @@
   var themeBtn = document.getElementById('themeToggle');
 
   function updateThemeIcon() {
+    if (!themeBtn) return;
     var dark = root.getAttribute('data-theme') === 'dark';
     themeBtn.textContent = dark ? '☀' : '☾';
     themeBtn.setAttribute('aria-label', dark ? 'Ganti ke tema terang' : 'Ganti ke tema gelap');
   }
   updateThemeIcon();
 
-  themeBtn.addEventListener('click', function () {
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    updateThemeIcon();
-  });
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      updateThemeIcon();
+    });
+  }
 
   // ---------- 2. Menu mobile ----------
   var menu = document.getElementById('menu');
   var menuBtn = document.getElementById('menuBtn');
 
-  menuBtn.addEventListener('click', function () {
-    var open = menu.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open);
-    menuBtn.textContent = open ? '✕' : '☰';
-  });
-  menu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      menu.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.textContent = '☰';
+  if (menu && menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+      menuBtn.textContent = open ? '✕' : '☰';
     });
-  });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      });
+    });
+  }
 
   // ---------- 3. Progres scroll + tombol ke atas ----------
   var progress = document.getElementById('progress');
@@ -44,22 +49,28 @@
   function onScroll() {
     var h = document.documentElement;
     var max = h.scrollHeight - h.clientHeight;
-    progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
-    toTop.classList.toggle('show', h.scrollTop > 600);
+    if (progress) {
+      progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    }
+    if (toTop) {
+      toTop.classList.toggle('show', h.scrollTop > 600);
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  toTop.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-  });
+  if (toTop) {
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
 
   // ---------- 4. Efek mengetik di bagian hero ----------
   var typed = document.getElementById('typed');
   // Ubah daftar ini sesuai keinginan kamu
   var roles = ['Software Engineer', 'AI Engineer', 'Data Analyst', 'UI/UX Designer'];
 
-  if (!reduceMotion) {
+  if (typed && !reduceMotion) {
     var r = 0, c = 0, deleting = false;
     (function tick() {
       var word = roles[r];
@@ -97,7 +108,8 @@
   var links = document.querySelectorAll('.nav nav a');
   var sections = [];
   links.forEach(function (a) {
-    var s = document.querySelector(a.getAttribute('href'));
+    var href = a.getAttribute('href');
+    var s = href && href.startsWith('#') ? document.querySelector(href) : null;
     if (s) sections.push({ link: a, section: s });
   });
 
@@ -155,23 +167,40 @@
   var toastTimer;
 
   function showToast(msg) {
+    if (!toast) return;
     toast.textContent = msg;
     toast.classList.add('show');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
   }
 
-  document.getElementById('copyEmail').addEventListener('click', function () {
-    var email = this.getAttribute('data-email');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(
-        function () { showToast('Email disalin ✓'); },
-        function () { showToast(email); }
-      );
-    } else {
-      showToast(email);
-    }
-  });
+  var copyBtn = document.getElementById('copyEmail');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var email = this.getAttribute('data-email');
+      var textSpan = this.querySelector('.copy-text');
+      var self = this;
+
+      function onCopied() {
+        showToast('Email disalin ✓');
+        if (textSpan) textSpan.textContent = 'Tersalin ✓';
+        self.classList.add('copied');
+        setTimeout(function () {
+          if (textSpan) textSpan.textContent = 'Salin';
+          self.classList.remove('copied');
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(onCopied, function () {
+          onCopied();
+          showToast(email);
+        });
+      } else {
+        onCopied();
+      }
+    });
+  }
 
   // ---------- 9. Galeri sertifikat (klik untuk memperbesar) ----------
   var lightbox = document.getElementById('lightbox');
@@ -201,24 +230,28 @@
   function showFile() {
     var full = lbFiles[lbIdx];
     var isPdf = /\.pdf$/i.test(full);
-    lbImg.style.display = isPdf ? 'none' : 'inline-block';
-    lbFrame.style.display = isPdf ? 'block' : 'none';
+    if (lbImg) lbImg.style.display = isPdf ? 'none' : 'inline-block';
+    if (lbFrame) lbFrame.style.display = isPdf ? 'block' : 'none';
     if (isPdf) {
-      lbFrame.src = full;
-      lbImg.removeAttribute('src');
+      if (lbFrame) lbFrame.src = full;
+      if (lbImg) lbImg.removeAttribute('src');
     } else {
-      lbImg.src = full;
-      lbImg.alt = lbTitle;
-      lbFrame.removeAttribute('src');
+      if (lbImg) {
+        lbImg.src = full;
+        lbImg.alt = lbTitle;
+      }
+      if (lbFrame) lbFrame.removeAttribute('src');
     }
-    lbCaption.textContent = lbTitle;
-    lbOpen.href = full;
+    if (lbCaption) lbCaption.textContent = lbTitle;
+    if (lbOpen) lbOpen.href = full;
     var multi = lbFiles.length > 1;
-    lbPrev.style.display = lbNext.style.display = multi ? 'flex' : 'none';
-    lbCount.textContent = multi ? ' (' + (lbIdx + 1) + '/' + lbFiles.length + ')' : '';
+    if (lbPrev) lbPrev.style.display = multi ? 'flex' : 'none';
+    if (lbNext) lbNext.style.display = multi ? 'flex' : 'none';
+    if (lbCount) lbCount.textContent = multi ? ' (' + (lbIdx + 1) + '/' + lbFiles.length + ')' : '';
   }
 
   function openLightbox(thumb) {
+    if (!lightbox) return;
     var img = thumb.querySelector('img');
     var hasImg = img && !thumb.classList.contains('empty');
     // data-full = berkas lengkap (boleh PDF; beberapa berkas dipisah tanda |); kalau tidak ada, pakai thumbnail
@@ -241,27 +274,31 @@
     lbIdx = (lbIdx + d + lbFiles.length) % lbFiles.length;
     showFile();
   }
-  lbPrev.addEventListener('click', function () { stepFile(-1); });
-  lbNext.addEventListener('click', function () { stepFile(1); });
+  if (lbPrev) lbPrev.addEventListener('click', function () { stepFile(-1); });
+  if (lbNext) lbNext.addEventListener('click', function () { stepFile(1); });
   document.addEventListener('keydown', function (e) {
-    if (!lightbox.classList.contains('open')) return;
+    if (!lightbox || !lightbox.classList.contains('open')) return;
     if (e.key === 'ArrowLeft') stepFile(-1);
     if (e.key === 'ArrowRight') stepFile(1);
   });
   function closeLightbox() {
+    if (!lightbox) return;
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
-    lbFrame.removeAttribute('src');
+    if (lbFrame) lbFrame.removeAttribute('src');
     document.body.style.overflow = '';
   }
 
   document.querySelectorAll('.cert-thumb, .edu-doc, .edu-view').forEach(function (t) {
     t.addEventListener('click', function () { openLightbox(t); });
   });
-  document.getElementById('lbClose').addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function (e) {
-    if (e.target === lightbox) closeLightbox();   // klik area gelap = tutup
-  });
+  var lbClose = document.getElementById('lbClose');
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();   // klik area gelap = tutup
+    });
+  }
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeLightbox();
   });
@@ -279,28 +316,30 @@
     var img = wrap && wrap.querySelector('img');
     var hasImg = img && !wrap.classList.contains('empty') && (img.currentSrc || img.src);
 
-    $('pmImgWrap').classList.toggle('none', !hasImg);
-    if (hasImg) { $('pmImg').src = img.currentSrc || img.src; $('pmImg').alt = img.alt; }
+    if ($('pmImgWrap')) $('pmImgWrap').classList.toggle('none', !hasImg);
+    if (hasImg && $('pmImg')) { $('pmImg').src = img.currentSrc || img.src; $('pmImg').alt = img.alt; }
 
-    $('pmTitle').textContent = card.querySelector('h3').textContent;
+    if ($('pmTitle')) $('pmTitle').textContent = card.querySelector('h3').textContent;
     var role = card.querySelector('.pr-role');
-    $('pmRole').textContent = role ? role.textContent : '';
+    if ($('pmRole')) $('pmRole').textContent = role ? role.textContent : '';
     var desc = card.querySelector('p:not(.pr-role):not(.tags):not(.links)');
-    $('pmDesc').textContent = desc ? desc.textContent : '';
+    if ($('pmDesc')) $('pmDesc').textContent = desc ? desc.textContent : '';
     var tags = card.querySelector('.tags');
-    $('pmTags').innerHTML = tags ? tags.innerHTML : '';
+    if ($('pmTags')) $('pmTags').innerHTML = tags ? tags.innerHTML : '';
 
     var links = $('pmLinks');
-    links.innerHTML = '';
-    card.querySelectorAll('.links a').forEach(function (a) {
-      if (a.getAttribute('href') !== '#') links.appendChild(a.cloneNode(true));
-    });
+    if (links) {
+      links.innerHTML = '';
+      card.querySelectorAll('.links a').forEach(function (a) {
+        if (a.getAttribute('href') !== '#') links.appendChild(a.cloneNode(true));
+      });
+    }
 
     lastFocus = document.activeElement;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    $('pmClose').focus();
+    if ($('pmClose')) $('pmClose').focus();
   }
   function close() {
     modal.classList.remove('open');
@@ -318,7 +357,7 @@
       if ((e.key === 'Enter' || e.key === ' ') && e.target === card) { e.preventDefault(); open(card); }
     });
   });
-  $('pmClose').addEventListener('click', close);
+  if ($('pmClose')) $('pmClose').addEventListener('click', close);
   modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modal.classList.contains('open')) close();
@@ -327,10 +366,17 @@
 
 // ---------- 13. Statistik di hero (dihitung otomatis dari isi halaman) ----------
 (function () {
-  var map = { proyek: '#proyek .card', pengalaman: '#pengalaman .item', sertifikat: '#sertifikat .cert', teknologi: '#keahlian .tags span' };
+  var map = {
+    proyek: '#proyek .card',
+    pengalaman: '#pengalaman .exp-card',
+    sertifikat: '#sertifikat .cert',
+    teknologi: '#keahlian .tags span'
+  };
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-stat]').forEach(function (el) {
-    var n = document.querySelectorAll(map[el.getAttribute('data-stat')]).length;
+    var sel = map[el.getAttribute('data-stat')];
+    if (!sel) return;
+    var n = document.querySelectorAll(sel).length;
     if (!n) return;
     if (reduce) { el.textContent = n; return; }
     var start = null;
@@ -561,5 +607,48 @@
     if (!img) { io.observe(t); return; }              // kartu khusus PDF
     img.addEventListener('error', function () { io.observe(t); });   // gambar tidak ada
     if (img.complete && img.naturalWidth === 0) io.observe(t);
+  });
+})();
+
+// ---------- 16. Filter & rincian interaktif bagian Pengalaman ----------
+(function () {
+  var chips = document.querySelectorAll('.exp-chip');
+  var cards = document.querySelectorAll('.exp-card');
+  if (!chips.length && !cards.length) return;
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      var filter = chip.getAttribute('data-exp');
+
+      cards.forEach(function (card) {
+        var kind = card.getAttribute('data-exp');
+        var show = filter === 'all' || kind === filter;
+        card.classList.toggle('hide', !show);
+      });
+    });
+  });
+
+  function toggleCard(card) {
+    var isOpen = card.classList.toggle('open');
+    card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    var label = card.querySelector('.exp-more');
+    if (label && label.childNodes.length > 0 && label.childNodes[0].nodeType === 3) {
+      label.childNodes[0].nodeValue = isOpen ? 'Tutup rincian ' : 'Rincian peran ';
+    }
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      toggleCard(card);
+    });
+    card.addEventListener('keydown', function (e) {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === card) {
+        e.preventDefault();
+        toggleCard(card);
+      }
+    });
   });
 })();
