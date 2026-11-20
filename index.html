@@ -39,8 +39,8 @@
 
   <header class="nav" id="nav">
     <a href="#top" class="logo" aria-label="Kembali ke atas">
-      <img src="\assets\logo\LOGO Audrey.jpeg" alt="Logo Audrey Pramudita" class="logo-mark" />
-  <span class="logo-text">Audrey Pramudita</span>
+      <img src="assets/logo/LOGO Audrey.jpeg" alt="Logo Audrey Pramudita" class="logo-mark" />
+      <span class="logo-text">Audrey Pramudita</span>
     </a>
 
     <nav id="menu" aria-label="Navigasi utama">
@@ -114,7 +114,7 @@
       </div>
 
       <div class="hero-stats">
-        <a href="#proyek"><b data-stat="proyek">13</b><span>Proyek</span></a>
+        <a href="#proyek"><b data-stat="proyek">12</b><span>Proyek</span></a>
         <a href="#pengalaman"><b data-stat="pengalaman">6</b><span>Pengalaman</span></a>
         <a href="#sertifikat"><b data-stat="sertifikat">14</b><span>Sertifikat</span></a>
         <a href="#keahlian"><b data-stat="teknologi">37</b><span>Teknologi</span></a>
@@ -179,7 +179,7 @@
       </div>
     </section>
 
-   <!-- PENGALAMAN -->
+    <!-- PENGALAMAN -->
     <section id="pengalaman" class="reveal">
       <h2>Pengalaman</h2>
 
@@ -440,6 +440,7 @@
 
       </div>
     </section>
+
     <!-- PROYEK -->
     <section id="proyek" class="reveal">
       <h2>Proyek</h2>
@@ -452,12 +453,12 @@
         <button class="chip" data-filter="desktop">Desktop</button>
       </div>
 
-      <!-- TODO: link GitHub/Demo tiap proyek: ganti href="#" (kalau dibiarkan "#", tombolnya otomatis tersembunyi) -->
+      <!-- TODO: link GitHub/Demo tiap proyek: ganti href="#" dan hapus class "soon-link" kalau link aslinya sudah siap -->
       <div class="grid">
 
         <article class="card" data-kind="ai web" data-slug="kawantumbuh" tabindex="0" role="button" aria-label="Lihat detail KawanTumbuh">
           <div class="card-img">
-            <img src="assets\APK Posyandu.jpeg" data-base="assets/proyek/kawantumbuh" alt="Tampilan proyek KawanTumbuh" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/APK Posyandu.jpeg" data-base="assets/proyek/kawantumbuh" alt="Tampilan proyek KawanTumbuh" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>KawanTumbuh</h3>
@@ -465,12 +466,12 @@
           <p>Aplikasi Android pemantau pertumbuhan balita yang memprediksi indikator pertumbuhan dengan forecasting time series dan machine learning. Proyek skripsi.</p>
           <p class="tags"><span>Python</span><span>Prophet</span><span>XGBoost</span><span>Scikit-Learn</span><span>Pandas</span><span>Mobile Dev</span><span>Supabase</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="ai web" data-slug="job-matcher-agent" tabindex="0" role="button" aria-label="Lihat detail Job Matcher Agent">
           <div class="card-img">
-            <img src="assets\Job Matcher 2.jpeg" data-base="assets/proyek/job-matcher-agent" alt="Tampilan proyek Job Matcher Agent" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/Job Matcher 2.jpeg" data-base="assets/proyek/job-matcher-agent" alt="Tampilan proyek Job Matcher Agent" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>Job Matcher Agent</h3>
@@ -478,12 +479,12 @@
           <p>Agen AI untuk penyaringan dan pencocokan lowongan kerja, mencakup arsitektur sistem serta integrasi LLM dengan RAG.</p>
           <p class="tags"><span>Python</span><span>LangChain</span><span>LLM</span><span>RAG</span><span>Agentic AI</span><span>Supabase</span><span>React</span><span>REST API</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="ai web" data-slug="stunting-classifier" tabindex="0" role="button" aria-label="Lihat detail Stunting & Nutrition Status Classifier">
           <div class="card-img">
-            <img src="assets\Stunting solo project.jpeg" data-base="assets/proyek/stunting-classifier" alt="Tampilan proyek Stunting &amp; Nutrition Status Classifier" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/Stunting solo project.jpeg" data-base="assets/proyek/stunting-classifier" alt="Tampilan proyek Stunting &amp; Nutrition Status Classifier" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>Stunting &amp; Nutrition Status Classifier</h3>
@@ -491,26 +492,24 @@
           <p>Model klasifikasi status gizi dan stunting dengan XGBoost, dilengkapi interpretasi SHAP dan pelacakan eksperimen MLflow, disajikan lewat FastAPI dan antarmuka React.</p>
           <p class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>MLflow</span><span>SHAP</span><span>FastAPI</span><span>React</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="ai" data-slug="automotive-sales" tabindex="0" role="button" aria-label="Lihat detail Automotive Sales Analysis">
-          <div class="card-img">
-            <img src="assets\Automation Sales.jpeg" data-base="assets/proyek/automotive-sales" alt="Tampilan proyek Automotive Sales Analysis" loading="lazy" onerror="imgFb(this)">
-            <span class="ph">Foto proyek</span>
+          <div class="card-img pdf" data-full="assets/Bootcamp Data Analyst_karirnex (2).pdf" data-title="Automotive Sales Analysis — Bootcamp Data Analyst KarirNex">
+            <span class="ph">📄 Lihat PDF</span>
           </div>
           <h3>Automotive Sales Analysis</h3>
           <p class="pr-role">Data Analyst (Bootcamp Project) &middot; Sep 2026</p>
           <p>Analisis data penjualan otomotif dengan Excel, SQL di BigQuery, dan dashboard Power BI (DAX). Proyek akhir Bootcamp Data Analyst KarirNex.</p>
           <p class="tags"><span>Excel</span><span>SQL (BigQuery)</span><span>Power BI</span><span>DAX</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">Lihat dashboard ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="Dashboard segera hadir" rel="noopener">Lihat dashboard ↗</a></p>
         </article>
-
 
         <article class="card" data-kind="ai web" data-slug="data-automator" tabindex="0" role="button" aria-label="Lihat detail Data Automator Project">
           <div class="card-img">
-            <img src="assets\Data Automatitation 1.jpeg" data-base="assets/proyek/data-automator" alt="Tampilan proyek Data Automator Project" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/Data Automatitation 1.jpeg" data-base="assets/proyek/data-automator" alt="Tampilan proyek Data Automator Project" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>Data Automator Project</h3>
@@ -518,12 +517,12 @@
           <p>Otomasi pengolahan data: pipeline parsing otomatis dan integrasi layanan AI untuk mempercepat operasional data.</p>
           <p class="tags"><span>Python</span><span>Tabula</span><span>Pandas</span><span>n8n</span><span>Laravel</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="iot ai" data-slug="redspintech" tabindex="0" role="button" aria-label="Lihat detail REDSPINTECH">
           <div class="card-img">
-            <img src="assets\Red spintech.jpeg" data-base="assets/proyek/redspintech" alt="Tampilan proyek REDSPINTECH" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/Red spintech.jpeg" data-base="assets/proyek/redspintech" alt="Tampilan proyek REDSPINTECH" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>REDSPINTECH</h3>
@@ -531,12 +530,12 @@
           <p>Penerapan IoT dan AI untuk mengoptimalkan pertumbuhan bayam merah, memadukan perangkat berbasis ESP32 dengan machine learning.</p>
           <p class="tags"><span>ESP32</span><span>IoT</span><span>Machine Learning</span><span>Python</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="web" data-slug="siakad" tabindex="0" role="button" aria-label="Lihat detail SIAKAD">
           <div class="card-img">
-            <img src="assets\SIAKAD 1.jpeg" data-base="assets/proyek/siakad" alt="Tampilan proyek SIAKAD" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/SIAKAD 1.jpeg" data-base="assets/proyek/siakad" alt="Tampilan proyek SIAKAD" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>SIAKAD</h3>
@@ -544,12 +543,12 @@
           <p>Sistem informasi akademik terpadu dengan autentikasi multi-peran (multi-role authentication).</p>
           <p class="tags"><span>Laravel</span><span>Bootstrap</span><span>MySQL</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="web" data-slug="e-badean" tabindex="0" role="button" aria-label="Lihat detail E-Badean">
           <div class="card-img">
-            <img src="assets\E-badean.jpeg" data-base="assets/proyek/e-badean" alt="Tampilan proyek E-Badean" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/E-badean.jpeg" data-base="assets/proyek/e-badean" alt="Tampilan proyek E-Badean" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>E-Badean</h3>
@@ -557,12 +556,12 @@
           <p>Sistem informasi pelayanan surat Kelurahan Badean, dengan modul manajemen surat resmi dan autentikasi multi-peran.</p>
           <p class="tags"><span>Laravel</span><span>Web Development</span><span>Mobile</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="web" data-slug="sicc" tabindex="0" role="button" aria-label="Lihat detail SICC (Sistem Informasi Competition Center)">
           <div class="card-img">
-            <img src="assets\SICC.jpeg" data-base="assets/proyek/sicc" alt="Tampilan proyek SICC (Sistem Informasi Competition Center)" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/SICC.jpeg" data-base="assets/proyek/sicc" alt="Tampilan proyek SICC (Sistem Informasi Competition Center)" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>SICC (Sistem Informasi Competition Center)</h3>
@@ -570,12 +569,12 @@
           <p>Sistem informasi untuk pengelolaan kompetisi, tersedia di web dan mobile.</p>
           <p class="tags"><span>Web Development</span><span>Mobile</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="web" data-slug="tompokersan-surat" tabindex="0" role="button" aria-label="Lihat detail Tompokersan Surat Menyurat">
           <div class="card-img">
-            <img src="assets\Tompokersan Surat Menyurat.jpeg" data-base="assets/proyek/tompokersan-surat" alt="Tampilan proyek Tompokersan Surat Menyurat" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/Tompokersan Surat Menyurat.jpeg" data-base="assets/proyek/tompokersan-surat" alt="Tampilan proyek Tompokersan Surat Menyurat" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>Tompokersan Surat Menyurat</h3>
@@ -583,12 +582,12 @@
           <p>Aplikasi surat-menyurat untuk Tompokersan yang dapat diakses lewat web dan mobile.</p>
           <p class="tags"><span>Web Development</span><span>Mobile</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="desktop" data-slug="lavarie" tabindex="0" role="button" aria-label="Lihat detail Lavarie: Laundry Information System">
           <div class="card-img">
-            <img src="assets\Lavarie 1.jpeg" data-base="assets/proyek/lavarie" alt="Tampilan proyek Lavarie: Laundry Information System" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/Lavarie 1.jpeg" data-base="assets/proyek/lavarie" alt="Tampilan proyek Lavarie: Laundry Information System" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>Lavarie: Laundry Information System</h3>
@@ -596,12 +595,12 @@
           <p>Sistem informasi laundry berbasis aplikasi desktop untuk mengelola layanan dan transaksi.</p>
           <p class="tags"><span>Java</span><span>Desktop Application</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
         <article class="card" data-kind="desktop" data-slug="rentalin" tabindex="0" role="button" aria-label="Lihat detail Rentalin (Awan Adventure)">
           <div class="card-img">
-            <img src="assets\Rentalin (Awan Adventure).jpeg" data-base="assets/proyek/rentalin" alt="Tampilan proyek Rentalin (Awan Adventure)" loading="lazy" onerror="imgFb(this)">
+            <img src="assets/Rentalin (Awan Adventure).jpeg" data-base="assets/proyek/rentalin" alt="Tampilan proyek Rentalin (Awan Adventure)" loading="lazy" onerror="imgFb(this)">
             <span class="ph">Foto proyek</span>
           </div>
           <h3>Rentalin (Awan Adventure)</h3>
@@ -609,7 +608,7 @@
           <p>Aplikasi desktop pengelolaan penyewaan (rental) untuk Awan Adventure.</p>
           <p class="tags"><span>Java</span><span>Desktop Application</span></p>
           <span class="more">Lihat detail →</span>
-          <p class="links"><a href="#" target="_blank" rel="noopener">GitHub ↗</a></p>
+          <p class="links"><a href="#" class="soon-link" data-soon="GitHub proyek segera hadir" rel="noopener">GitHub ↗</a></p>
         </article>
 
       </div>
@@ -655,8 +654,6 @@
       <div class="edu">
 
         <!-- ===== PERGURUAN TINGGI ===== -->
-        <!-- Opsional: tambahkan IPK/gelar di bawah baris .edu-meta, contoh:
-             <span>🎓 IPK 3,xx</span> -->
         <article class="edu-card" id="edu-polije">
           <div class="edu-rail"></div>
           <div class="edu-box">
@@ -751,14 +748,6 @@
       <h2>Sertifikasi</h2>
       <p class="hint">Klik thumbnail untuk memperbesar sertifikat.</p>
 
-      <!--
-        CARA MENAMBAH GAMBAR SERTIFIKAT:
-        1. Simpan gambar (jpg/png) di folder assets/sertifikat/
-        2. Namanya harus sama dengan di atribut src di bawah ini
-        3. Kalau punya link verifikasi, ganti href="#" pada tombol "Verifikasi"
-           (kalau dibiarkan "#", tombolnya otomatis disembunyikan)
-      -->
-
       <h3 class="sub">Sertifikasi Profesi (BNSP)</h3>
       <div class="cert-grid">
 
@@ -818,7 +807,6 @@
         </article>
 
         <article class="cert">
-          <!-- Kalau transkrip nilai sudah ada, tambahkan atribut: data-full="assets/sertifikat/dts-associate-data-scientist.jpg|assets/sertifikat/dts-associate-data-scientist-nilai.jpg" -->
           <button class="cert-thumb" type="button" data-title="Sertifikat Associate Data Scientist VSGA (Digital Talent Scholarship)" aria-label="Perbesar sertifikat Associate Data Scientist VSGA">
             <img src="assets/sertifikat/dts-associate-data-scientist.jpg" alt="Sertifikat Associate Data Scientist VSGA Digital Talent Scholarship" loading="lazy" onerror="this.parentElement.classList.add('empty')">
             <span class="ph">Sertifikat</span>
@@ -956,14 +944,14 @@
     <!-- KONTAK -->
     <section id="kontak" class="reveal">
       <h2>Kontak</h2>
-      
+
       <div class="contact-layout">
         <!-- Kolom Kiri: Informatif & Direct Email -->
         <div class="contact-info">
           <p class="contact-desc">
             Tertarik berkolaborasi, berdiskusi seputar proyek, atau memiliki peluang menarik untuk dibicarakan? Silakan hubungi saya melalui kanal berikut.
           </p>
-          
+
           <div class="email-box">
             <span class="email-label">Surel Utama</span>
             <div class="email-action">
