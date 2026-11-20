@@ -610,6 +610,7 @@
   });
 })();
 
+
 // ---------- 16. Filter & rincian interaktif bagian Pengalaman ----------
 (function () {
   var chips = document.querySelectorAll('.exp-chip');
@@ -651,4 +652,45 @@
       }
     });
   });
+  // ---------- 17. Toggle status ketersediaan kerja saat diklik ----------
+(function () {
+  var badge = document.getElementById('statusBadge');
+  if (!badge) return;
+
+  var textEl = badge.querySelector('.status-text');
+  var dotEl = badge.querySelector('.dot');
+  var STORAGE_KEY = 'workStatusOpen';
+
+  function renderStatus(isOpen) {
+    badge.setAttribute('data-open', isOpen ? 'true' : 'false');
+    if (textEl) {
+      textEl.textContent = isOpen ? 'Terbuka untuk peluang kerja' : 'Sedang bekerja · Terbuka untuk kolaborasi';
+    }
+    if (dotEl) {
+      dotEl.style.background = isOpen ? '' : '#94a3b8';
+    }
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  var isOpen = saved === null ? badge.getAttribute('data-open') !== 'false' : saved === 'true';
+  renderStatus(isOpen);
+
+  function toggleStatus() {
+    isOpen = !isOpen;
+    renderStatus(isOpen);
+    try { localStorage.setItem(STORAGE_KEY, String(isOpen)); } catch (e) {}
+    if (typeof showToast === 'function') {
+      showToast(isOpen ? 'Status: Terbuka untuk peluang kerja' : 'Status: Sedang bekerja · Terbuka untuk kolaborasi');
+    }
+  }
+
+  badge.addEventListener('click', toggleStatus);
+  badge.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleStatus();
+    }
+  });
+})();
 })();

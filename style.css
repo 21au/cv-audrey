@@ -1001,6 +1001,10 @@ h2::after { transition: background 0.5s, height 0.5s; }
   overflow: hidden;
   box-shadow: 0 20px 44px -34px var(--shadow);
 }
+.status[role="button"] {
+  cursor: pointer;
+  user-select: none;
+}
 
 .directory-item {
   display: flex;
